@@ -31,3 +31,20 @@
 }
 
 /* End of Smart Table styles*/
+
+
+/* Start of Examples, not required in production */
+.example-modal .modal {
+  position: relative;
+  top: auto;
+  bottom: auto;
+  right: auto;
+  left: auto;
+  display: block;
+  z-index: 1;
+}
+.example-modal .modal {
+  background: transparent!important;
+}
+
+/* End of Examples*/

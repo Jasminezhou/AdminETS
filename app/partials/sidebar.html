@@ -28,7 +28,7 @@
   <ul class="sidebar-menu">
     <li class="header">HEADER</li>
     <!-- Optionally, you can add icons to the links -->
-    <li ng-class="{'active': $state.current.name === 'root.dashboard'}"><a ui-sref="root.dashboard"><span>Dashboard</span></a><</li>
+    <li ng-class="{'active': $state.current.name === 'root.dashboard'}"><a ui-sref="root.dashboard"><span>Dashboard</span></a></li>
     <li class="treeview" ng-class="{'active': treeview[0] || ['table1', 'table2'].indexOf($state.params.tableName) >= 0}">
       <a ng-click="treeview[0] = !treeview[0]"><span>Tables</span> <i class="fa fa-angle-left pull-right"></i></a>
       <ul class="treeview-menu">
@@ -41,13 +41,27 @@
       </ul>
     </li>
     <li class="treeview" ng-class="{'active': treeview[1] || ['table3', 'table4'].indexOf($state.params.tableName) >= 0}">
-      <a href="#" ng-click="treeview[1] = !treeview[1]"><span>Another Tables</span> <i class="fa fa-angle-left pull-right"></i></a>
+      <a ng-click="treeview[1] = !treeview[1]"><span>Another Tables</span> <i class="fa fa-angle-left pull-right"></i></a>
       <ul class="treeview-menu">
         <li ng-class="{'active': $state.params.tableName === 'table3'}">
           <a ui-sref="root.table.list({tableName: 'table3'})"><span>Table 3</span></a>
         </li>
         <li ng-class="{'active': $state.params.tableName === 'table4'}">
           <a ui-sref="root.table.list({tableName: 'table4'})"><span>Table 4</span></a>
+        </li>
+      </ul>
+    </li>
+    <li class="treeview" ng-class="{'active': treeview[2] || $state.includes('root.elements')}">
+      <a ng-click="treeview[2] = !treeview[2]"><span>UI Elements</span> <i class="fa fa-angle-left pull-right"></i></a>
+      <ul class="treeview-menu">
+        <li ng-class="{'active': $state.params.tableName === 'table3'}">
+          <a ui-sref="root.elements.general"><span>General</span></a>
+        </li>
+        <li ng-class="{'active': $state.params.tableName === 'table4'}">
+          <a ui-sref="root.elements.buttons"><span>Buttons</span></a>
+        </li>
+        <li ng-class="{'active': $state.params.tableName === 'table4'}">
+          <a ui-sref="root.elements.modals"><span>Modals Examples</span></a>
         </li>
       </ul>
     </li>

@@ -138,16 +138,3 @@
   border-bottom-right-radius: 2px !important;
   border-bottom-left-radius: 0 !important;
 }
-
-.skin-ets .btn {
-  background: transparent;
-  color: green;
-  border: none;
-
-  /* CSS Transition */
-  -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
-  -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
-  -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
-  -o-transition: background .2s ease-in-out, border .2s ease-in-out;
-  transition: background .2s ease-in-out, border .2s ease-in-out;
-}

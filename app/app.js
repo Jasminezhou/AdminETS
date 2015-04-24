@@ -114,6 +114,39 @@ angular.module('ngAdminLteApp', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'sma
                 }
             }
         })
+        // Root elements
+        .state('root.elements', {
+            abstract: true
+        })
+
+        // elements Button
+        .state('root.elements.buttons', {
+            url: '/elements/buttons',
+            views: {
+                'master@root': {
+                    templateUrl: 'app/partials/buttons.html',
+                }
+            }
+        })
+
+        // elements General
+        .state('root.elements.general', {
+            url: '/elements/general',
+            views: {
+                'master@root': {
+                    templateUrl: 'app/partials/general.html',
+                }
+            }
+        })
+        // elements Modals
+        .state('root.elements.modals', {
+            url: '/elements/modals',
+            views: {
+                'master@root': {
+                    templateUrl: 'app/partials/modals.html',
+                }
+            }
+        })
     }
   ]
 );
