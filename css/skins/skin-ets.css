@@ -1,0 +1,153 @@
+/*
+ * Skin: Green
+ * -----------
+ */
+.skin-ets .main-header .navbar {
+  background-color: #00a65a;
+}
+.skin-ets .main-header .navbar .nav > li > a {
+  color: #ffffff;
+}
+.skin-ets .main-header .navbar .nav > li > a:hover,
+.skin-ets .main-header .navbar .nav > li > a:active,
+.skin-ets .main-header .navbar .nav > li > a:focus,
+.skin-ets .main-header .navbar .nav .open > a,
+.skin-ets .main-header .navbar .nav .open > a:hover,
+.skin-ets .main-header .navbar .nav .open > a:focus {
+  background: rgba(0, 0, 0, 0.1);
+  color: #f6f6f6;
+}
+.skin-ets .main-header .navbar .navbar-custom-menu > .nav {
+  margin-right: 10px;
+}
+.skin-ets .main-header .navbar .sidebar-toggle {
+  color: #ffffff;
+}
+.skin-ets .main-header .navbar .sidebar-toggle:hover {
+  color: #f6f6f6;
+  background: rgba(0, 0, 0, 0.1);
+}
+.skin-ets .main-header .navbar .sidebar-toggle {
+  color: #fff;
+}
+.skin-ets .main-header .navbar .sidebar-toggle:hover {
+  background-color: #008d4c;
+}
+@media (max-width: 767px) {
+  .skin-ets .main-header .navbar .dropdown-menu li.divider {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .skin-ets .main-header .navbar .dropdown-menu li a {
+    color: #fff;
+  }
+  .skin-ets .main-header .navbar .dropdown-menu li a:hover {
+    background: #008d4c;
+  }
+}
+.skin-ets .main-header .logo {
+  background-color: #008d4c;
+  color: #ffffff;
+  border-bottom: 0px solid transparent;
+}
+.skin-ets .main-header .logo > a {
+  color: #ffffff;
+}
+.skin-ets .main-header .logo:hover {
+  background: #008749;
+}
+.skin-ets .main-header li.user-header {
+  background-color: #00a65a;
+}
+.skin-ets .content-header {
+  background: transparent;
+}
+.skin-ets .user-panel > .info,
+.skin-ets .user-panel > .info > a {
+  color: #fff;
+}
+.skin-ets .sidebar-menu > li.header {
+  color: #4b646f;
+  background: #1a2226;
+}
+.skin-ets .sidebar-menu > li > a {
+  border-left: 3px solid transparent;
+  margin-right: 1px;
+}
+.skin-ets .sidebar-menu > li > a:hover,
+.skin-ets .sidebar-menu > li.active > a {
+  color: #ffffff;
+  background: #1e282c;
+  border-left-color: #00a65a;
+}
+.skin-ets .sidebar-menu > li > .treeview-menu {
+  margin: 0 1px;
+  background: #2c3b41;
+}
+.skin-ets .wrapper,
+.skin-ets .main-sidebar,
+.skin-ets .left-side {
+  background: #222d32;
+}
+.skin-ets .sidebar a {
+  color: #b8c7ce;
+}
+.skin-ets .sidebar a:hover {
+  text-decoration: none;
+}
+.skin-ets .treeview-menu > li > a {
+  color: #8aa4af;
+}
+.skin-ets .treeview-menu > li.active > a,
+.skin-ets .treeview-menu > li > a:hover {
+  color: #ffffff;
+}
+.skin-ets .sidebar-form {
+  border-radius: 3px;
+  border: 1px solid #374850;
+  margin: 10px 10px;
+}
+.skin-ets .sidebar-form input[type="text"],
+.skin-ets .sidebar-form .btn {
+  box-shadow: none;
+  background-color: #374850;
+  border: 1px solid transparent;
+  height: 35px;
+  -webkit-transition: all 0.3s cubic-bezier(0.32, 1.25, 0.375, 1.15);
+  -o-transition: all 0.3s cubic-bezier(0.32, 1.25, 0.375, 1.15);
+  transition: all 0.3s cubic-bezier(0.32, 1.25, 0.375, 1.15);
+}
+.skin-ets .sidebar-form input[type="text"] {
+  color: #666;
+  border-top-left-radius: 2px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 2px !important;
+}
+.skin-ets .sidebar-form input[type="text"]:focus,
+.skin-ets .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  background-color: #fff;
+  color: #666;
+}
+.skin-ets .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  border-left-color: #fff;
+}
+.skin-ets .sidebar-form .btn {
+  color: #999;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 2px !important;
+  border-bottom-right-radius: 2px !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.skin-ets .btn {
+  background: transparent;
+  color: green;
+  border: none;
+
+  /* CSS Transition */
+  -webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+  -o-transition: background .2s ease-in-out, border .2s ease-in-out;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+}

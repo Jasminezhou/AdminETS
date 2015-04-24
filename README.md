@@ -1,4 +1,3 @@
-# ng-AdminLTE
-Angular version of AdminLTE 2, with ui-router and ui-bootstrap
+# AdminETS
+ETS Admin rewrite from Django, now based on ng-AdminLTE
 
-The target is to reuse entire AdminLTE stylesheet and skins to drive an Angular base admin platform.
