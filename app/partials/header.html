@@ -1,6 +1,6 @@
 
 <!-- Logo -->
-<a  class="logo"><b>Admin</b>LTE</a>
+<a  class="logo" ng-bind-html="siteConfig.logoHtml"></a>
 <!-- Header Navbar: style can be found in header.less -->
 <nav class="navbar navbar-static-top" role="navigation">
   <!-- Sidebar toggle button-->
@@ -13,7 +13,7 @@
       <li class="dropdown messages-menu" dropdown>
         <a  class="dropdown-toggle" dropdown-toggle>
           <i class="fa fa-envelope-o"></i>
-          <span class="label label-success">4</span>
+          <span class="label label-default">4</span>
         </a>
         <ul class="dropdown-menu">
           <li class="header">You have 4 messages</li>
@@ -89,7 +89,7 @@
       <li class="dropdown notifications-menu" dropdown>
         <a  class="dropdown-toggle" dropdown-toggle>
           <i class="fa fa-bell-o"></i>
-          <span class="label label-warning">10</span>
+          <span class="label label-default">10</span>
         </a>
         <ul class="dropdown-menu">
           <li class="header">You have 10 notifications</li>
@@ -131,7 +131,7 @@
       <li class="dropdown tasks-menu" dropdown>
         <a  class="dropdown-toggle" dropdown-toggle>
           <i class="fa fa-flag-o"></i>
-          <span class="label label-danger">9</span>
+          <span class="label label-default">9</span>
         </a>
         <ul class="dropdown-menu">
           <li class="header">You have 9 tasks</li>
@@ -200,34 +200,22 @@
       <!-- User Account: style can be found in dropdown.less -->
       <li class="dropdown user user-menu" dropdown>
         <a  class="dropdown-toggle" dropdown-toggle>
-          <img src="http://placehold.it/160x160" class="user-image" alt="User Image"/>
-          <span class="hidden-xs">Alexander Pierce</span>
+          <img src="{{siteConfig.userIconUrl}}" class="user-image" alt="User Image"/>
+          <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
         </a>
         <ul class="dropdown-menu">
           <!-- User image -->
           <li class="user-header">
-            <img src="http://placehold.it/160x160" class="img-circle" alt="User Image" />
+            <img src="{{siteConfig.userIconUrl}}" class="img-circle" alt="User Image" />
             <p>
-              Alexander Pierce - Web Developer
+              {{siteConfig.userName}}
               <small>Member since Nov. 2012</small>
             </p>
-          </li>
-          <!-- Menu Body -->
-          <li class="user-body">
-            <div class="col-xs-4 text-center">
-              <a >Followers</a>
-            </div>
-            <div class="col-xs-4 text-center">
-              <a >Sales</a>
-            </div>
-            <div class="col-xs-4 text-center">
-              <a >Friends</a>
-            </div>
           </li>
           <!-- Menu Footer-->
           <li class="user-footer">
             <div class="pull-left">
-              <a  class="btn btn-default btn-flat">Profile</a>
+              <a ui-sref="root.lock" class="btn btn-default btn-flat">Lock Screen</a>
             </div>
             <div class="pull-right">
               <a class="btn btn-default btn-flat" ui-sref="root.login">Sign out</a>

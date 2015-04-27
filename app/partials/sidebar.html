@@ -1,19 +1,42 @@
 <!-- sidebar: style can be found in sidebar.less -->
 <section class="sidebar">
 
-  <!-- Sidebar user panel (optional) -->
-  <div class="user-panel">
-    <div class="pull-left image">
-      <img src="http://placehold.it/160x160" class="img-circle" alt="User Image" />
-    </div>
-    <div class="pull-left info">
-      <p>Alexander Pierce</p>
-      <!-- Status -->
-      <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-    </div>
-  </div>
+  <!-- Sidebar Menu -->
+  <ul class="sidebar-menu">
+    
+    <!-- Optionally, you can add icons to the links -->
+    <li ng-class="{'active': $state.current.name === 'root.dashboard'}">
+      <a ng-click="resetTreeview()" ui-sref="root.dashboard"><span class="glyphicon glyphicon-th" aria-hidden="true"></span><span> Dashboard</span></a>
+    </li>
+    <li class="header"><b>DATABASE CONSOLE</b></li>
+    <!-- Treeview table menu, config is from services.SiteContent.sidebarTableMenu -->
+    <li class="treeview" ng-repeat="category in treeviewCfg" ng-class="{'active': treeview[$index]}">
+      <a ng-click="resetTreeview(); treeview[$index] = !treeview[$index]"><span class="{{category.icon}}" aria-hidden="true"></span><span>{{category.label}}</span> <i class="fa fa-angle-left pull-right"></i></a>
+      <ul class="treeview-menu">
+        <li ng-repeat="table in category.tables" ng-class="{'active': $state.params.tableName === table.tableName}">
+          <a ui-sref="root.table.list({tableName: table.tableName})"></span>{{table.label}}</span></a>
+        </li>
+      </ul>
+    </li>
+    <!-- Test UI Elements -->
+    <li class="header"><b>ETS ADMIN TEMPLATE</b></li>
+    <li class="treeview" ng-class="{'active': treeview[99] || $state.includes('root.elements')}">
+      <a ng-click="resetTreeview(); treeview[99] = !treeview[99]"><span>UI Elements</span> <i class="fa fa-angle-left pull-right"></i></a>
+      <ul class="treeview-menu">
+        <li>
+          <a ui-sref="root.elements.general"><span>General</span></a>
+        </li>
+        <li>
+          <a ui-sref="root.elements.buttons"><span>Buttons</span></a>
+        </li>
+        <li>
+          <a ui-sref="root.elements.modals"><span>Modals Examples</span></a>
+        </li>
+      </ul>
+    </li>
+  </ul><!-- /.sidebar-menu -->
 
-  <!-- search form (Optional) -->
+    <!-- search form (Optional) -->
   <form class="sidebar-form">
     <div class="input-group">
       <input type="text" name="q" class="form-control" placeholder="Search..."/>
@@ -23,48 +46,5 @@
     </div>
   </form>
   <!-- /.search form -->
-
-  <!-- Sidebar Menu -->
-  <ul class="sidebar-menu">
-    <li class="header">HEADER</li>
-    <!-- Optionally, you can add icons to the links -->
-    <li ng-class="{'active': $state.current.name === 'root.dashboard'}"><a ui-sref="root.dashboard"><span>Dashboard</span></a></li>
-    <li class="treeview" ng-class="{'active': treeview[0] || ['table1', 'table2'].indexOf($state.params.tableName) >= 0}">
-      <a ng-click="treeview[0] = !treeview[0]"><span>Tables</span> <i class="fa fa-angle-left pull-right"></i></a>
-      <ul class="treeview-menu">
-        <li ng-class="{'active': $state.params.tableName === 'table1'}">
-          <a ui-sref="root.table.list({tableName: 'table1'})"><span>Table 1</span></a>
-        </li>
-        <li ng-class="{'active': $state.params.tableName === 'table2'}">
-          <a ui-sref="root.table.list({tableName: 'table2'})"><span>Table 2</span></a>
-        </li>
-      </ul>
-    </li>
-    <li class="treeview" ng-class="{'active': treeview[1] || ['table3', 'table4'].indexOf($state.params.tableName) >= 0}">
-      <a ng-click="treeview[1] = !treeview[1]"><span>Another Tables</span> <i class="fa fa-angle-left pull-right"></i></a>
-      <ul class="treeview-menu">
-        <li ng-class="{'active': $state.params.tableName === 'table3'}">
-          <a ui-sref="root.table.list({tableName: 'table3'})"><span>Table 3</span></a>
-        </li>
-        <li ng-class="{'active': $state.params.tableName === 'table4'}">
-          <a ui-sref="root.table.list({tableName: 'table4'})"><span>Table 4</span></a>
-        </li>
-      </ul>
-    </li>
-    <li class="treeview" ng-class="{'active': treeview[2] || $state.includes('root.elements')}">
-      <a ng-click="treeview[2] = !treeview[2]"><span>UI Elements</span> <i class="fa fa-angle-left pull-right"></i></a>
-      <ul class="treeview-menu">
-        <li ng-class="{'active': $state.params.tableName === 'table3'}">
-          <a ui-sref="root.elements.general"><span>General</span></a>
-        </li>
-        <li ng-class="{'active': $state.params.tableName === 'table4'}">
-          <a ui-sref="root.elements.buttons"><span>Buttons</span></a>
-        </li>
-        <li ng-class="{'active': $state.params.tableName === 'table4'}">
-          <a ui-sref="root.elements.modals"><span>Modals Examples</span></a>
-        </li>
-      </ul>
-    </li>
-  </ul><!-- /.sidebar-menu -->
 </section>
 <!-- /.sidebar -->

@@ -10,7 +10,7 @@ angular.module('ngAdminLteApp', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'sma
     // to active whenever 'contacts.list' or one of its decendents is active.
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-    $state.transitionTo('root.dashboard');
+    $state.transitionTo('root.login');
     }
   ]
 )

@@ -3,10 +3,23 @@
  * -----------
  */
 .skin-ets .main-header .navbar {
-  background-color: #00a65a;
+  background-color: lightseagreen;
 }
+
+.skin-ets .content-wrapper, .right-side {
+  background-color: #f3f3f4;
+}
+
+.skin-ets footer a{
+  color: lightseagreen;
+}
+
+.skin-ets footer a:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .skin-ets .main-header .navbar .nav > li > a {
-  color: #ffffff;
+  color: #fff;
 }
 .skin-ets .main-header .navbar .nav > li > a:hover,
 .skin-ets .main-header .navbar .nav > li > a:active,
@@ -31,7 +44,7 @@
   color: #fff;
 }
 .skin-ets .main-header .navbar .sidebar-toggle:hover {
-  background-color: #008d4c;
+  background-color: #17938C;;
 }
 @media (max-width: 767px) {
   .skin-ets .main-header .navbar .dropdown-menu li.divider {
@@ -45,7 +58,7 @@
   }
 }
 .skin-ets .main-header .logo {
-  background-color: #008d4c;
+  background-color: rgb(23, 147, 140);;
   color: #ffffff;
   border-bottom: 0px solid transparent;
 }
@@ -53,10 +66,10 @@
   color: #ffffff;
 }
 .skin-ets .main-header .logo:hover {
-  background: #008749;
+  background:  #157E78;
 }
 .skin-ets .main-header li.user-header {
-  background-color: #00a65a;
+  background-color: lightseagreen;
 }
 .skin-ets .content-header {
   background: transparent;
@@ -77,19 +90,20 @@
 .skin-ets .sidebar-menu > li.active > a {
   color: #ffffff;
   background: #1e282c;
-  border-left-color: #00a65a;
+  border-left-color: lightseagreen;
 }
 .skin-ets .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
   background: #2c3b41;
+  padding-left: 27px;
 }
 .skin-ets .wrapper,
 .skin-ets .main-sidebar,
 .skin-ets .left-side {
-  background: #222d32;
+  background: #020F0E;
 }
 .skin-ets .sidebar a {
-  color: #b8c7ce;
+  color: lightseagreen;
 }
 .skin-ets .sidebar a:hover {
   text-decoration: none;
@@ -103,7 +117,6 @@
 }
 .skin-ets .sidebar-form {
   border-radius: 3px;
-  border: 1px solid #374850;
   margin: 10px 10px;
 }
 .skin-ets .sidebar-form input[type="text"],
@@ -138,3 +151,144 @@
   border-bottom-right-radius: 2px !important;
   border-bottom-left-radius: 0 !important;
 }
+
+/*Start of ETS theme*/
+.fullscreen-wrapper{
+  background-color: lightseagreen !important; 
+}
+
+.btn-default {
+  background-color: transparent;
+  color: lightseagreen;
+  border-color: lightseagreen;
+}
+
+.btn-default.disabled, .btn-default.disabled.active, .btn-default.disabled.focus, .btn-default.disabled:active, .btn-default.disabled:focus, .btn-default.disabled:hover, .btn-default[disabled], .btn-default[disabled].active, .btn-default[disabled].focus, .btn-default[disabled]:active, .btn-default[disabled]:focus, .btn-default[disabled]:hover, fieldset[disabled] .btn-default, fieldset[disabled] .btn-default.active, fieldset[disabled] .btn-default.focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:hover {
+  background-color: transparent;
+  border-color: lightseagreen;
+}
+
+.btn-default:hover, .btn-default:active, .btn-default.hover {
+  border-color: lightseagreen;
+  color: #fff;
+  background-color: lightseagreen !important;
+}
+
+.btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.dropdown-toggle.btn-default {
+  color: white;
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+}
+
+.btn-success {
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+}
+.btn-success:hover, .btn-success:active, .btn-success.hover {
+  color: lightseagreen;
+  background-color: white;
+  border-color: lightseagreen;
+}
+
+.btn-success.active, .btn-success.focus, .btn-success:active, .btn-success:focus, .btn-success:hover, .open>.dropdown-toggle.btn-success {
+  color: lightseagreen;
+  background-color: white;
+  border-color: lightseagreen;
+}
+
+.btn-success.disabled, .btn-success.disabled.active, .btn-success.disabled.focus, .btn-success.disabled:active, .btn-success.disabled:focus, .btn-success.disabled:hover, .btn-success[disabled], .btn-success[disabled].active, .btn-success[disabled].focus, .btn-success[disabled]:active, .btn-success[disabled]:focus, .btn-success[disabled]:hover, fieldset[disabled] .btn-success, fieldset[disabled] .btn-success.active, fieldset[disabled] .btn-success.focus, fieldset[disabled] .btn-success:active, fieldset[disabled] .btn-success:focus, fieldset[disabled] .btn-success:hover {
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+}
+
+.label-default {
+  border: 1px solid white;
+  background-color: lightseagreen;
+  color: white;
+}
+
+.label-success, .modal-success .modal-body {
+  background-color: lightseagreen;
+}
+
+.text-success {
+  color: lightseagreen;
+}
+
+.skin-ets .sidebar-menu > li > a:hover, .skin-ets .sidebar-menu > li.active > a {
+  color: #ffffff;
+  background: #1e282c;
+  border-left-color: lightseagreen;
+}
+
+.btn-info {
+  background-color: transparent;
+  border-color: transparent;
+  color: lightseagreen;
+}
+
+.btn-info:hover, .btn-info:active, .btn-info.hover {
+  background-color: lightseagreen;
+}
+
+.btn-info.active, .btn-info.focus, .btn-info:active, .btn-info:focus, .btn-info:hover, .open>.dropdown-toggle.btn-info {
+  color: #fff;
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+}
+
+.btn-info.disabled, .btn-info.disabled.active, .btn-info.disabled.focus, .btn-info.disabled:active, .btn-info.disabled:focus, .btn-info.disabled:hover, .btn-info[disabled], .btn-info[disabled].active, .btn-info[disabled].focus, .btn-info[disabled]:active, .btn-info[disabled]:focus, .btn-info[disabled]:hover, fieldset[disabled] .btn-info, fieldset[disabled] .btn-info.active, fieldset[disabled] .btn-info.focus, fieldset[disabled] .btn-info:active, fieldset[disabled] .btn-info:focus, fieldset[disabled] .btn-info:hover {
+  background-color: lightseagreen;
+  color: #fff;
+  border-color: lightseagreen;
+}
+
+.btn-danger {
+  background-color: transparent;
+  border-color: transparent;
+  color: #dd4b39;
+}
+
+.btn-danger.disabled, .btn-danger.disabled.active, .btn-danger.disabled.focus, .btn-danger.disabled:active, .btn-danger.disabled:focus, .btn-danger.disabled:hover, .btn-danger[disabled], .btn-danger[disabled].active, .btn-danger[disabled].focus, .btn-danger[disabled]:active, .btn-danger[disabled]:focus, .btn-danger[disabled]:hover, fieldset[disabled] .btn-danger, fieldset[disabled] .btn-danger.active, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:active, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger:hover {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.btn-danger.active, .btn-danger.focus, .btn-danger:active, .btn-danger:focus, .btn-danger:hover, .open>.dropdown-toggle.btn-danger {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #d73925;
+}
+
+
+.box {
+  border-top: 3px solid lightseagreen;
+}
+
+.form-control{
+  border-color: lightseagreen;
+}
+
+.main-sidebar {
+  height: 100%;
+}
+
+.sidebar-menu {
+  height: calc(100% - 55px);
+  overflow: scroll;
+}
+
+
+.sidebar-menu > li > a {
+  padding: 20px;
+}
+
+.thumbnail{
+  background: transparent;
+  border: none;
+  padding: 15px;
+}
+
+
+/*End of ETS theme*/

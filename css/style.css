@@ -1,10 +1,7 @@
 /* Start AdminLTE.css fixes*/
-.box-header > .box-tools {
-	left: 5px;
-}
 
 .box-header > .box-tools button {
-	margin: 0 1px;
+	margin: 0 5px;
 }
 
 .fullscreen-wrapper {

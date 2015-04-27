@@ -1,7 +1,7 @@
 <div class="fullscreen-wrapper">
   <div class="login-box">
     <div class="login-logo">
-      <a><b>Admin</b>LTE</a>
+      <a ng-bind-html="siteConfig.logoHtml"></a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">
       <p class="login-box-msg">Sign in to start your session</p>
@@ -21,7 +21,7 @@
             </label>   
           </div><!-- /.col -->
           <div class="col-xs-4">
-            <button ng-click="$state.go('root.dashboard')" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            <button ng-click="$state.go('root.dashboard')" class="btn btn-success btn-block btn-flat">Sign In</button>
           </div><!-- /.col -->
         </div>
       </form>

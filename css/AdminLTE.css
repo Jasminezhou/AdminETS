@@ -782,7 +782,7 @@ a:focus {
   clear: both;
 }
 .navbar-nav > .user-menu > .dropdown-menu > .user-footer .btn-default {
-  color: #666666;
+  /*color: #666666;*/
 }
 .navbar-nav > .user-menu .user-image {
   float: left;
@@ -1866,7 +1866,7 @@ a:focus {
   position: relative;
   padding: 15px 5px;
   margin: 0 0 10px 10px;
-  min-width: 80px;
+  min-width: 60px;
   height: 60px;
   text-align: center;
   color: #666;
@@ -2184,6 +2184,7 @@ a:focus {
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
   border-top: 1px solid #f4f4f4;
+  vertical-align: middle;
 }
 .table > thead > tr > th {
   border-bottom: 2px solid #f4f4f4;

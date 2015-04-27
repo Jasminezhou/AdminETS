@@ -2,16 +2,16 @@
 	<!-- Automatic element centering -->
 	<div class="lockscreen-wrapper">
 	  <div class="lockscreen-logo">
-	    <a><b>Admin</b>LTE</a>
+	    <a ng-bind-html="siteConfig.logoHtml"></a>
 	  </div>
 	  <!-- User name -->
-	  <div class="lockscreen-name">John Doe</div>
+	  <div class="lockscreen-name">{{siteConfig.userName}}</div>
 
 	  <!-- START LOCK SCREEN ITEM -->
 	  <div class="lockscreen-item">
 	    <!-- lockscreen image -->
 	    <div class="lockscreen-image">
-	      <img src="http://placehold.it/128x128" alt="user image"/>
+	      <img src="{{siteConfig.userIconUrl}}" alt="user image"/>
 	    </div>
 	    <!-- /.lockscreen-image -->
 
@@ -33,7 +33,7 @@
 	    <a ui-sref="root.login">Or sign in as a different user</a>
 	  </div>
 	  <div class='lockscreen-footer text-center'>
-	    Copyright &copy; 2014-2015 <b><a href="http://jing.ca/" class='text-black'>Jing Studio</a></b><br>
+	    Copyright &copy; 2014-2015 <b><a href="{{siteConfig.copyrightUrl}}" class='text-black'>{{siteConfig.copyrightCompany}}</a></b><br>
 	    All rights reserved
 	  </div>
 	</div><!-- /.center -->
