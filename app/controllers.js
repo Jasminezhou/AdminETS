@@ -26,42 +26,10 @@ angular.module('ngAdminLteApp.controllers', ['ngAdminLteApp.services'])
 .controller('LockCtrl', function($scope){ })
 .controller('RegisterCtrl', function($scope){ })
 .controller('DashboardCtrl', function($scope){ })
-.controller('TableListCtrl', function($scope, $state){
+.controller('TableListCtrl', function($scope, $state, TableConfig, TableDataService){
   $scope.tableName = $state.params.tableName;
-  $scope.rowCollection = [
-    {
-      campaignName: 'California Dreaming', 
-      account: 'Overwaitea Food Group', 
-      referral: {'signup': 10, 'referrers': 5, 'referees': 4}, 
-      startDate: new Date(), 
-      endDate: new Date(), 
-      addDate: new Date()
-    },
-    {
-      campaignName: 'Refer a Friend for FREE Increase in Campaign Performance!', 
-      account: 'Future Flow Media', 
-      referral: {'signup': 33, 'referrers': 28, 'referees': 19}, 
-      startDate: new Date(), 
-      endDate: new Date(), 
-      addDate: new Date()
-    },
-    {
-      campaignName: 'Free email responsive design template...', 
-      account: 'Revenue Automation', 
-      referral: {'signup': 5, 'referrers': 5, 'referees': 4}, 
-      startDate: new Date(), 
-      endDate: new Date(), 
-      addDate: new Date()
-    },
-    {
-      campaignName: 'Enter to win the all-new 2013 Nissan Pathfinder', 
-      account: 'Nissan', 
-      referral: {'signup': 10, 'referrers': 5, 'referees': 4}, 
-      startDate: new Date(), 
-      endDate: new Date(), 
-      addDate: new Date()
-    },
-  ];
+  $scope.tableConfig = TableConfig[$scope.tableName].list;
+  $scope.rowCollection = TableDataService[$scope.tableName];
 
   $scope.removeRow = function removeRow(row) {
       var index = $scope.rowCollection.indexOf(row);
@@ -70,15 +38,17 @@ angular.module('ngAdminLteApp.controllers', ['ngAdminLteApp.services'])
       }
   }
 })
-.controller('TableEditCtrl', function($scope, $state){
+.controller('TableEditCtrl', function($scope, $state, TableConfig, TableDataService){
   $scope.tableName = $state.params.tableName;
-  $scope.recordId = $state.params.recordId;
+  $scope.tableConfig = TableConfig[$scope.tableName].edit;
+  $scope.rowData = TableDataService[$scope.tableName][parseInt($state.params.recordId)];
   // Datepicker
-  $scope.open = function($event) {
+  $scope.dtOpened = {};
+  $scope.dtOpen = function($event, key) {
+    $scope.dtOpened = {};
     $event.preventDefault();
     $event.stopPropagation();
-
-    $scope.opened = true;
+    $scope.dtOpened[key] = true;
   };
 
 })
