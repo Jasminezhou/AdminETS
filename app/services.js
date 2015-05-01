@@ -128,10 +128,154 @@ angular.module('ngAdminLteApp.services', [])
 			type: 'text',
 		}, ]
 	};
+	var account_list = {
+		label: 'Account',
+		columnCfg: [{
+			label: 'Company Name',
+			cellTemplate: '<h2>{{row.Name}}</h2>'
+		}, {
+			label: 'Shortcode for Company',
+			sortKey: 'AccountCode',
+			cellTemplate: '<b>{{row.AccountCode}}</b>',
+		}]
+	};
+	var account_edit = {
+		label: 'Change Account',
+		fields: [{
+			key: 'Name',
+			label: 'Company Name',
+			type: 'text',
+		}, {
+			key: 'AccountCode',
+			label: 'Shortcode for Company',
+			type: 'text',
+		}, {
+			key: 'PrimaryContact',
+			label: 'Primary Contact Person Name',
+			type: 'text',
+		}, {
+			key: 'BillingContact',
+			label: 'Billing Contact Person Name',
+			type: 'text',
+		}, {
+			key: 'PrimaryCPhone',
+			label: 'Primary Contact phone number',
+			type: 'text',
+		}, {
+			key: 'BillingCPhone',
+			label: 'Billing Contact phone number',
+			type: 'text',
+		}, {
+			key: 'MainGeographyAddr1',
+			label: 'Main Address 1',
+			type: 'text',
+		}, {
+			key: 'MainGeographyAddr2',
+			label: 'Main Address 2',
+			type: 'text',
+		}, {
+			key: 'BillingAddr1',
+			label: 'Billing Address 1',
+			type: 'text',
+		}, {
+			key: 'BillingAddr2',
+			label: 'Billing Address 2',
+			type: 'text',
+		}, {
+			key: 'AddDate',
+			label: 'Date Added',
+			type: 'datepicker',
+		}, {
+			key: 'ChangeDate',
+			label: 'Date Changed',
+			type: 'datepicker',
+		}, {
+			key: 'AccountLogoLocation',
+			lable: 'Account Logo URL',
+			type: 'text',
+		}]
+	};
+	var vouchergroup_list = {
+		label: 'Voucher Group',
+		columnCfg: [{
+			label: 'Name',
+			cellTemplate: '{{row.Name}}',
+		}, {
+			label: 'Campaign',
+			cellTemplate: '{{row.Campaign}}',
+		}, {
+			label: 'Voucher Category',
+			cellTemplate: '{{row.VoucherCategory}}',
+		}, {
+			label: 'Description',
+			cellTemplate: '{{row.desc_title}}',
+		}]
+	};
+
+	var vouchergroup_edit = {
+		label: 'Voucher Group',
+		fields: [{
+			key: 'Name',
+			label: 'Voucher Group Name',
+			type: 'text',
+		}, {
+			key: 'Campaign',
+			label: 'Campaign Name',
+			type: 'dropdown',
+		}, {
+			key: 'VoucherCategory',
+			label: 'Category',
+			type: 'dropdown',
+		}, {
+			key: 'Creator',
+			label: 'Creator',
+			type: 'text',
+		}, {
+			key: 'CreationDate',
+			label: 'Date Created',
+			type: 'datepicker',
+		}, {
+			key: 'StartDate',
+			label: 'Date Start',
+			type: 'datepicker',
+		}, {
+			key: 'EndDate',
+			label: 'Date End',
+			type: 'datepicker',
+		}, {
+			key: 'VoucherImage',
+			label: 'Voucher Image URL',
+			type: 'text',
+		}, {
+			key: 'DescTitle',
+			label: 'Description Title',
+			type: 'text',
+		}, {
+			key: 'DescHighlight',
+			label: 'Description Highlight',
+			type: 'text',
+		}, {
+			key: 'DescSubTitle',
+			label: 'Description sub-title',
+			type: 'text'
+		}, {
+			key: 'DescDetail',
+			label: 'Description Details',
+			type: 'text',
+		}]
+	};
 	return {
 		campaign: {
 			list: campaign_list,
-			edit: campaign_edit
+			edit: campaign_edit,
+		},
+		account: {
+			list: account_list,
+			edit: account_edit,
+		},
+		vouchergroup: {
+			list: vouchergroup_list,
+			edit: vouchergroup_edit,
 		}
 	}
 })
@@ -171,7 +315,19 @@ angular.module('ngAdminLteApp.services', [])
       addDate: new Date()
     },
   ];
+  var account = [
+  	{
+  		Name: 'Overwaitea Food Group',
+  		AccountCode: 'food',
+  		PrimaryContact: 'John Joe',
+  	}, {
+  		Name: 'Future Flow Media',
+  		AccountCode: 'ffm',
+  		PrimaryContact: 'Chris',
+  	}
+  ];
   return {
   	campaign: campaign,
+  	account: account
   };
 })
