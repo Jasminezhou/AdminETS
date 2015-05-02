@@ -29,6 +29,14 @@
                 </span>
               </div><!-- /.input group -->
             </div>
+            <div ng-if="field.type==='radio'">
+              <div class="radio" ng-repeat="option in field.radioOptions">
+                <label>
+                  <input type="radio" name="optionsRadios" value="{{option.value}}" checked>
+                  {{option.label}}
+                </label>
+              </div>
+            </div>
         </div><!-- /.form-group (ng-repeat) -->
         <div class="form-group">
           <button class="btn btn-success">OK</button>

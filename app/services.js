@@ -191,7 +191,7 @@ angular.module('ngAdminLteApp.services', [])
 			type: 'datepicker',
 		}, {
 			key: 'AccountLogoLocation',
-			lable: 'Account Logo URL',
+			label: 'Account Logo URL',
 			type: 'text',
 		}]
 	};
@@ -199,16 +199,16 @@ angular.module('ngAdminLteApp.services', [])
 		label: 'Voucher Group',
 		columnCfg: [{
 			label: 'Name',
-			cellTemplate: '{{row.Name}}',
+			cellTemplate: '<span>{{row.Name}}</span>',
 		}, {
 			label: 'Campaign',
-			cellTemplate: '{{row.Campaign}}',
+			cellTemplate: '<span>{{row.Campaign}}</span>',
 		}, {
 			label: 'Voucher Category',
-			cellTemplate: '{{row.VoucherCategory}}',
+			cellTemplate: '<span>{{row.VoucherCategory}}</span>',
 		}, {
 			label: 'Description',
-			cellTemplate: '{{row.desc_title}}',
+			cellTemplate: '<span>{{row.DescTitle}}</span>',
 		}]
 	};
 
@@ -264,6 +264,56 @@ angular.module('ngAdminLteApp.services', [])
 			type: 'text',
 		}]
 	};
+	var voucher_list = {
+		label: 'Vouchers',
+		columnCfg: [{
+			label: 'Voucher Code',
+			cellTemplate: '<span>{{row.VoucherCode}}</span>',
+		}, {
+			label: 'Group',
+			cellTemplate: '<span>{{row.Group}}</span>',
+		}, {
+			label: 'Added Date',
+			cellTemplate: '<span>{{row.AddDate}}</span>',
+		}, {
+			label: 'Available',
+			cellTemplate: '<span>{{row.Available}}</span>',
+		}, {
+			label: 'Contact',
+			cellTemplate: '<span>{{row.Contact}}</span>'
+		}]
+	};
+	var voucher_edit = {
+		label: 'Voucher',
+		fields: [{
+			key: 'VoucherCode',
+			label: 'Voucher Code',
+			type: 'text',
+		}, {
+			key: 'Group',
+			label: 'Group',
+			type: 'dropdown',
+		}, {
+			key: 'AddDate',
+			label: 'Added Date',
+			type: 'datepicker',
+		}, {
+			key: 'Available',
+			label: 'Available',
+			type: 'radio',
+			radioOptions: [{
+				value: 'yes',
+				label: 'Yes',
+			}, {
+				value: 'no',
+				label: 'No',
+			}]
+		}, {
+			key: 'Contact',
+			label: 'Contact',
+			type: 'text'
+		}]
+	};
 	return {
 		campaign: {
 			list: campaign_list,
@@ -276,11 +326,15 @@ angular.module('ngAdminLteApp.services', [])
 		vouchergroup: {
 			list: vouchergroup_list,
 			edit: vouchergroup_edit,
+		},
+		voucher: {
+			list: voucher_list,
+			edit: voucher_edit,
 		}
 	}
 })
 
-.factory('TableDataService', function(){
+.factory('TableDataService', function(TableConfig){
 	var campaign = [
     {
       campaignName: 'California Dreaming', 
@@ -326,8 +380,28 @@ angular.module('ngAdminLteApp.services', [])
   		PrimaryContact: 'Chris',
   	}
   ];
+  var randomData = function(tableName) {
+  	var fields = TableConfig[tableName].edit.fields;
+  	var result = [];
+  	for (var i=0; i<5; i++) {
+  		var record = {};
+  		fields.forEach(function(f){
+  			var value = 'Very cool ' + f.label + i;
+  			if (f.type === 'datepicker') {
+  				value = new Date();
+  			} else if (f.type === 'radio') {
+  				value = 'Yes';
+  			}
+  			record[f.key] = value
+  		});
+  		result.push(record);
+  	}
+  	return result;
+  };
   return {
   	campaign: campaign,
-  	account: account
+  	account: account,
+  	vouchergroup: randomData('vouchergroup'),
+  	voucher: randomData('voucher'),
   };
 })
