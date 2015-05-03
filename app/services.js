@@ -91,9 +91,6 @@ angular.module('ngAdminLteApp.services', [])
 			label: 'End Date',
 			sortKey: 'endDate',
 			cellTemplate: '<span>{{row.endDate | date}}</span>',
-		}, {
-			label: 'Actions',
-			cellTemplate: '<button type="button" class="btn btn-sm btn-info" ng-click="$state.go(\'root.table.edit\', {\'tableName\': tableName, \'recordId\': $index})"> <i class="glyphicon glyphicon-pencil"> </i> </button> <button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger"> <i class="glyphicon glyphicon-remove"> </i> </button>', 
 		}]
 	};
 	var campaign_edit = {
@@ -274,7 +271,7 @@ angular.module('ngAdminLteApp.services', [])
 			cellTemplate: '<span>{{row.Group}}</span>',
 		}, {
 			label: 'Added Date',
-			cellTemplate: '<span>{{row.AddDate}}</span>',
+			cellTemplate: '<span>{{row.AddDate | date}}</span>',
 		}, {
 			label: 'Available',
 			cellTemplate: '<span>{{row.Available}}</span>',
@@ -314,6 +311,337 @@ angular.module('ngAdminLteApp.services', [])
 			type: 'text'
 		}]
 	};
+	var contact_list = {
+		label: 'Contact',
+		columnCfg: [{
+			label: 'Email',
+			cellTemplate: '<span>{{row.Email}}</span>'
+		}, {
+			label: 'FirstName',
+			cellTemplate: '<span>{{row.FirstName}}</span>'
+		}, {
+			label: 'LastName',
+			cellTemplate: '<span>{{row.LastName}}</span>'
+		}]
+	};
+	var contact_edit = {
+		label: 'Contact',
+		fields: [{
+			key: 'Email',
+			label: 'Email',
+			type: 'text',
+		}, {
+			key: 'FirstName',
+			label: 'First Name',
+			type: 'text',
+		}, {
+			key: 'LastName',
+			label: 'Last Name',
+			type: 'text',
+		}, {
+			key: 'Photo',
+			label: 'Photo URL',
+			type: 'text',
+		}, {
+			key: 'Address1',
+			label: 'Address 1',
+			type: 'text',
+		}, {
+			key: 'Address2',
+			label: 'Address 2',
+			type: 'text',
+		}, {
+			key: 'City',
+			label: 'City',
+			type: 'text',
+		}, {
+			key: 'Phone',
+			label: 'Phone',
+			type: 'text',
+		}, {
+			key: 'Geography',
+			label: 'Geography Info',
+			type: 'text',
+		}, {
+			key: 'AddDate',
+			label: 'Date Added',
+			type: 'datepicker',
+		}, {
+			key: 'ChangeDate',
+			label: 'Date Changed',
+			type: 'datepicker',
+		}]
+	};
+    var questionhistory_list = {
+    	label: 'Question History',
+    	columnCfg: [{
+    		label: 'Contact',
+    		cellTemplate: '<span>{{row.Contact}}</span>',
+    	}, {
+    		label: 'Campaign',
+    		cellTemplate: '<span>{{row.Campaign}}</span>',
+    	}, {
+    		label: 'Question',
+    		cellTemplate: '<span>{{row.Question}}</span>',
+    	}, {
+    		label: 'Answer',
+    		cellTemplate: '<span>{{row.Answer}}</span>',
+    	}, {
+    		label: 'AddDate',
+    		cellTemplate: '<span>{{row.AddDate | date}}</span>',
+    	}]
+    };
+    var questionhistory_edit = {
+    	label: 'Question History',
+    	fields: [{
+    		key: 'Contact',
+    		label: 'Contact',
+    		type: 'text',
+    	}, {
+    		key: 'Campaign',
+    		label: 'Campaign',
+    		type: 'text',
+    	}, {
+    		key: 'Question',
+    		label: 'Question',
+    		type: 'text',
+    	}, {
+    		key: 'Answer',
+    		label: 'Answer',
+    		type: 'text',
+    	}, {
+    		key: 'AddDate',
+    		label: 'Date Added',
+    		type: 'datepicker,'
+    	}]
+    };
+    var contestentry_list = {
+    	label: 'Contest Entry',
+    	columnCfg: [{
+    		label: 'Contact',
+    		cellTemplate: '<span>{{row.Contact}}</span>',
+    	}, {
+    		label: 'Campaign',
+    		cellTemplate: '<span>{{row.Campaign}}</span>'
+    	}, {
+    		label: 'Voucher',
+    		cellTemplate: '<span>{{row.Voucher}}</span>',
+    	}, {
+    		label: 'SocialChannel',
+    		cellTemplate: '<span>{{row.SocialChannel}}</span>',
+    	}]
+    };
+    var contestentry_edit = {
+    	label: 'Contest Entry',
+    	fields: [{
+    		key: 'Contact',
+    		label: 'Contact',
+    		type: 'text',
+    	}, {
+    		key: 'Campaign',
+    		label: 'Campaign',
+    		type: 'text',
+    	}, {
+    		key: 'Voucher',
+    		label: 'Voucher',
+    		type: 'text',
+    	}, {
+    		key: 'SocialChannel',
+    		label: 'Social Channel',
+    		type: 'text',
+    	}, {
+    		key: 'SocialId',
+    		label: 'Social User ID',
+    		type: 'text',
+    	}, {
+    		key: 'SocialExtra',
+    		label: 'Extra Info about Social User',
+    		type: 'text',
+    	}, {
+    		key: 'IssueDate',
+    		label: 'Issue Date',
+    		type: 'datepicker',
+    	}]
+    };
+    var referral_list = {
+    	label: 'Referral',
+    	columnCfg: [{
+    		label: 'Contact',
+    		cellTemplate: '<span>{{row.Contact}}</span>',
+    	}, {
+    		label: 'Campaign',
+    		cellTemplate: '<span>{{row.Campaign}}</span>',
+    	}, {
+    		label: 'IssueDate',
+    		cellTemplate: '<span>{{row.IssueDate | date}}</span>',
+    	}]
+    };
+    var referral_edit = {
+    	label: 'Referral',
+    	fields: [{
+    		key: 'Contact',
+    		label: 'Contact',
+    		type: 'text',
+    	}, {
+    		key: 'Campaign',
+    		label: 'Campaign',
+    		type: 'text',
+    	}, {
+    		key: 'ReferCode',
+    		label: 'Referral Code',
+    		type: 'text',
+    	}, {
+    		key: 'Voucher',
+    		label: 'Voucher',
+    		type: 'text',
+    	}, {
+    		key: 'IssueDate',
+    		label: 'Issue Date',
+    		type: 'datepicker',
+    	}, {
+    		key: 'RedeemedDate',
+    		label: 'Redeemed Date',
+    		type: 'datepicker',
+    	}]
+    };
+    var referee_list = {
+    	label: 'Referee',
+    	columnCfg: [{
+    		label: 'Contact',
+    		cellTemplate: '<span>{{row.Contact}}</span>',
+    	}, {
+    		label: 'Campaign',
+    		cellTemplate: '<span>{{row.Campaign}}</span>',
+    	}, {
+    		label: 'IssueDate',
+    		cellTemplate: '<span>{{row.IssueDate | date}}</span>',
+    	}]
+    };
+    var referee_edit = {
+    	label: 'Referee',
+    	fields: [{
+    		key: 'Contact',
+    		label: 'Contact',
+    		type: 'text',
+    	}, {
+    		key: 'Campaign',
+    		label: 'Campaign',
+    		type: 'text',
+    	}, {
+    		key: 'ReferCode',
+    		label: 'Referral Code',
+    		type: 'text',
+    	}, {
+    		key: 'Voucher',
+    		label: 'Voucher',
+    		type: 'text',
+    	}, {
+    		key: 'IssueDate',
+    		label: 'Issue Date',
+    		type: 'datepicker',
+    	}, {
+    		key: 'RedeemedDate',
+    		label: 'Redeemed Date',
+    		type: 'datepicker',
+    	}]
+    };
+    var sharehistory_list = {
+    	label: 'Share History',
+    	columnCfg: [{
+    		label: 'From',
+    		cellTemplate: '<span>{{row.From}}</span>',
+    	}, {
+    		label: 'Campaign',
+    		cellTemplate: '<span>{{row.Campaign}}</span>',
+    	}, {
+    		label: 'To',
+    		cellTemplate: '<span>{{row.ToName}} from channel {{row.ToChannel}}</span>',
+    	}, {
+    		label: 'Date',
+    		cellTemplate: '<span>{{row.ToDate | date}}</span>',
+    	}]
+    };
+    var sharehistory_edit = {
+    	label: 'Share History',
+    	fields: [{
+    		key: 'From',
+    		label: 'From',
+    		type: 'text',
+    	}, {
+    		key: 'Campaign',
+    		label: 'Campaign',
+    		type: 'text',
+    	}, {
+    		key: 'ToId',
+    		label: 'To ID',
+    		type: 'text',
+    	}, {
+    		key: 'ToChannel',
+    		label: 'To Channel',
+    		type: 'radio',
+    		radioOptions: [{
+    			value: 'facebook',
+    			label: 'Facebook',
+    		}, {
+    			value: 'google',
+    			label: 'Google Plus',
+    		}, {
+    			value: 'linkedin',
+    			label: 'LinkedIn',
+    		}, {
+    			value: 'twitter',
+    			label: 'Twitter',
+    		}, {
+    			value: 'email',
+    			label: 'Email',
+    		}]
+    	}, {
+    		key: 'ToExtra',
+    		label: 'Extra Info for To user',
+    		type: 'text',
+    	}, {
+    		key: 'ToDate',
+    		label: 'Date of sharing',
+    		type: 'datepicker',
+    	}]
+    }
+    var questions_list = {
+    	label: 'Questions',
+    	columnCfg: [{
+    		label: 'Question',
+    		cellTemplate: '<span>{{row.Question}}</span>',
+    	}]
+    };
+    var questions_edit = {
+    	label: 'Questions',
+    	fields: [{
+    		key: 'Question',
+    		label: 'Question',
+    		type: 'text',
+    	}]
+    };
+    var geography_list = {
+    	label: 'Geography',
+    	columnCfg: [{
+    		label: 'Province/State',
+    		cellTemplate: '<span>{{row.ProvState}}</span>',
+    	}, {
+    		label: 'Country',
+    		cellTemplate: '<span>{{row.Country}}</span>',
+    	}]
+    };
+    var geography_edit = {
+    	label: 'Geography',
+    	fields: [{
+    		key: 'ProvState',
+    		label: 'Province/State',
+    		type: 'text',
+    	}, {
+    		key: 'Country',
+    		label: 'Country',
+    		type: 'text',
+    	}]
+    };
 	return {
 		campaign: {
 			list: campaign_list,
@@ -330,7 +658,39 @@ angular.module('ngAdminLteApp.services', [])
 		voucher: {
 			list: voucher_list,
 			edit: voucher_edit,
-		}
+		},
+		contact: {
+			list: contact_list,
+			edit: contact_edit,
+		},
+		questionhistory: {
+			list: questionhistory_list,
+			edit: questionhistory_edit,
+		},
+		contestentry: {
+			list: contestentry_list,
+			edit: contestentry_edit,
+		},
+		referral: {
+			list: referral_list,
+			edit: referral_edit,
+		},
+		referee: {
+			list: referee_list,
+			edit: referee_edit,
+		},
+		sharehistory: {
+			list: sharehistory_list,
+			edit: sharehistory_edit
+		},
+		questions: {
+			list: questions_list,
+			edit: questions_edit,
+		},
+		geography: {
+			list: geography_list,
+			edit: geography_edit,
+		},
 	}
 })
 
@@ -403,5 +763,13 @@ angular.module('ngAdminLteApp.services', [])
   	account: account,
   	vouchergroup: randomData('vouchergroup'),
   	voucher: randomData('voucher'),
+  	contact: randomData('contact'),
+  	contestentry: randomData('contestentry'),
+  	questionhistory: randomData('questionhistory'),
+  	referral: randomData('referral'),
+  	referee: randomData('referee'),
+  	sharehistory: randomData('sharehistory'),
+  	questions: randomData('questions'),
+  	geography: randomData('geography'),
   };
 })
