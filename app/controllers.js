@@ -3,7 +3,7 @@ angular.module('ngAdminLteApp.controllers', ['ngAdminLteApp.services'])
 .controller('RootCtrl', function($scope, $rootScope, $state, SiteConfig, SiteContent){
   $scope.siteConfig = SiteConfig;
   // controls sidebar expand/close
-  $rootScope.sidebarCollapse = false;
+  $rootScope.sidebarCollapse = true;
   $scope.toggleSidebar = function(){
     $rootScope.sidebarCollapse = !$rootScope.sidebarCollapse;
   };
@@ -22,10 +22,12 @@ angular.module('ngAdminLteApp.controllers', ['ngAdminLteApp.services'])
     })
   }
 })
-.controller('LoginCtrl', function($scope){ })
+.controller('LoginCtrl', function($scope, $rootScope){ })
 .controller('LockCtrl', function($scope){ })
 .controller('RegisterCtrl', function($scope){ })
-.controller('DashboardCtrl', function($scope){ })
+.controller('DashboardCtrl', function($scope, $rootScope){
+  $rootScope.sidebarCollapse = false;
+})
 .controller('TableListCtrl', function($scope, $state, TableConfig, TableDataService){
   $scope.tableName = $state.params.tableName;
   $scope.tableConfig = TableConfig[$scope.tableName].list;
