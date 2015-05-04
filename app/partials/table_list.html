@@ -8,7 +8,7 @@
           <div class="box-title">{{tableConfig.label}}</div>
           <div class="box-tools pull-right">
             <div class="input-group">
-                <button type="button" class="btn btn-default btn-sm">
+                <button type="button" class="btn btn-default btn-sm" ng-click="$state.go('root.table.create', {'tableName': tableName})">
                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create
                 </button>
                 <button type="button" class="btn btn-default btn-sm">

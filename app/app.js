@@ -114,6 +114,16 @@ angular.module('ngAdminLteApp', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'sma
                 }
             }
         })
+        // table create view
+        .state('root.table.create', {
+            url: '/table/:tableName/create',
+            views: {
+                'master@root': {
+                    templateUrl: 'app/partials/table_edit.html',
+                    controller: 'TableEditCtrl'
+                }
+            }
+        })
         // Root elements
         .state('root.elements', {
             abstract: true
@@ -144,6 +154,15 @@ angular.module('ngAdminLteApp', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'sma
             views: {
                 'master@root': {
                     templateUrl: 'app/partials/modals.html',
+                }
+            }
+        })
+        // elements Forms
+        .state('root.elements.forms', {
+            url: '/elements/forms',
+            views: {
+                'master@root': {
+                    templateUrl: 'app/partials/forms.html',
                 }
             }
         })
