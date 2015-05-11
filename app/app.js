@@ -1,4 +1,4 @@
-angular.module('ngAdminLteApp', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'smart-table', 'ngAdminLteApp.controllers', 'ngAdminLteApp.directives', 'ngAdminLteApp.filters'])
+angular.module('ngAdminLteApp', ['ui.router', 'ui.bootstrap', 'ui.sortable', 'ngSanitize', 'smart-table', 'ngAdminLteApp.controllers', 'ngAdminLteApp.directives', 'ngAdminLteApp.filters'])
 
 .run(
   [          '$rootScope', '$state', '$stateParams',
@@ -163,6 +163,16 @@ angular.module('ngAdminLteApp', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'sma
             views: {
                 'master@root': {
                     templateUrl: 'app/partials/forms.html',
+                }
+            }
+        })
+        // API Doc
+        .state('root.elements.api', {
+            url: '/elements/api',
+            views: {
+                'master@root': {
+                    templateUrl: 'app/partials/api.html',
+                    controller: 'ApiDocCtrl'
                 }
             }
         })

@@ -74,56 +74,82 @@ angular.module('ngAdminLteApp.services', [])
 			cellTemplate: '<button type="button" class="btn btn-sm btn-success"> <i class="fa fa-desktop"> </i> </button>'
 		}, {
 			label: 'Campaign Name',
-			sortKey: 'campaignName',
-			cellTemplate: '<strong>{{row.campaignName}}</strong> </br><small>Created {{row.addDate | date}}</small>',
+			sortKey: 'CampaignName',
+			cellTemplate: '<strong>{{row.CampaignName}}</strong> </br><small>Created {{row.AddDate | date}}</small>',
 		}, {
 			label: 'Account',
-			sortKey: 'account',
-			cellTemplate: '<span>{{row.account}}</span>',
+			sortKey: 'Account',
+			cellTemplate: '<span>{{row.Account}}</span>',
 		}, {
 			label: 'Referral Status',
-			cellTemplate: '<a class="btn btn-app"> <span class="badge bg-red">{{row.referral.signup}}</span> <i class="fa fa-heart-o"></i> Sign Ups </a> <a class="btn btn-app"> <span class="badge badge bg-teal">{{row.referral.referrers}}</span> <i class="fa fa-users"></i> Referrers </a> <a class="btn btn-app"> <span class="badge bg-yellow">{{row.referral.referees}}</span> <i class="fa fa-bullhorn"></i> Referees </a>',
+			cellTemplate: '<a class="btn btn-app"> <span class="badge bg-red">{{row.Referral.signup}}</span> <i class="fa fa-heart-o"></i> Sign Ups </a> <a class="btn btn-app"> <span class="badge badge bg-teal">{{row.Referral.referrers}}</span> <i class="fa fa-users"></i> Referrers </a> <a class="btn btn-app"> <span class="badge bg-yellow">{{row.Referral.referees}}</span> <i class="fa fa-bullhorn"></i> Referees </a>',
 		}, {
 			label: 'Start Date',
 			sortKey: 'startDate',
-			cellTemplate: '<span>{{row.startDate | date}}</span>',
+			cellTemplate: '<span>{{row.StartDate | date}}</span>',
 		}, {
 			label: 'End Date',
 			sortKey: 'endDate',
-			cellTemplate: '<span>{{row.endDate | date}}</span>',
+			cellTemplate: '<span>{{row.EndDate | date}}</span>',
+		}],
+		actionButtons: [{
+			label: 'Export Contacts',
+			btnClass: 'btn-info',
+			iconClass: 'glyphicon glyphicon-cloud-download'
+		}, {
+			label: 'Export Referrals',
+			btnClass: 'btn-info',
+			iconClass: 'glyphicon glyphicon-download-alt'
 		}]
 	};
 	var campaign_edit = {
 		label: 'Campaign',
 		fields: [{
-			key: 'account',
+			key: 'Account',
 			label: 'Account',
 			type: 'dropdown',
 		}, {
-			key: 'campaignCode',
+			key: 'CampaignCode',
 			label: 'Shortcode for Campaign',
 			type: 'text',
 		}, {
-			key: 'campaignName',
+			key: 'CampaignName',
 			label: 'Campaign Name',
 			type: 'text',
 		}, {
-			key: 'callContacts',
+			key: 'CallContacts',
 			label: 'Contact Person',
 			type: 'text',
 		}, {
-			key: 'startDate',
+			key: 'StartDate',
 			label: 'Start Date',
 			type: 'datepicker',
 		}, {
-			key: 'endDate',
+			key: 'EndDate',
 			label: 'End Date',
 			type: 'datepicker',
 		}, {
-			key: 'trackingCode',
+			key: 'TrackingCode',
 			label: 'Tracking Code',
 			type: 'text',
-		}, ]
+		}, {
+			key: 'Questions',
+			label: 'Questions',
+			type: 'sortable',
+			sortableOptions: {
+				placeholder: "sortable-item",
+    			connectWith: ".sortable-container"
+    		},
+    		sortableCfg: {
+    			choice: {
+    				key: 'AvailableQuestions',
+    				label: 'Available Questions',
+    			},
+    			selection: {
+    				label: 'Selected Questions',
+    			}
+    		}
+		}]
 	};
 	var account_list = {
 		label: 'Account',
@@ -697,36 +723,92 @@ angular.module('ngAdminLteApp.services', [])
 .factory('TableDataService', function(TableConfig){
 	var campaign = [
     {
-      campaignName: 'California Dreaming', 
-      account: 'Overwaitea Food Group', 
-      referral: {'signup': 10, 'referrers': 5, 'referees': 4}, 
-      startDate: new Date(), 
-      endDate: new Date(), 
-      addDate: new Date()
+      CampaignName: 'California Dreaming', 
+      Account: 'Overwaitea Food Group', 
+      Referral: {'signup': 10, 'referrers': 5, 'referees': 4}, 
+      StartDate: new Date().toISOString().split('T')[0], 
+      EndDate: new Date().toISOString().split('T')[0], 
+      AddDate: new Date().toISOString().split('T')[0],
+      Questions: [{
+      	id: '123',
+      	label: 'Do you know that you can add new questions?',
+      }],
+      AvailableQuestions: [{
+      	id: '152', 
+      	label: 'What is the best Question 1?',
+      }, {
+      	id: '321',
+      	label: 'Do you like this survey?',
+      }, {
+      	id: '12312',
+      	label: 'This drag and drop feature in ETS is cool, right?'
+      }]
     },
     {
-      campaignName: 'Refer a Friend for FREE Increase in Campaign Performance!', 
-      account: 'Future Flow Media', 
-      referral: {'signup': 33, 'referrers': 28, 'referees': 19}, 
-      startDate: new Date(), 
-      endDate: new Date(), 
-      addDate: new Date()
+      CampaignName: 'Refer a Friend for FREE Increase in Campaign Performance!', 
+      Account: 'Future Flow Media', 
+      Referral: {'signup': 33, 'referrers': 28, 'referees': 19}, 
+      StartDate: new Date().toISOString().split('T')[0], 
+      EndDate: new Date().toISOString().split('T')[0], 
+      AddDate: new Date().toISOString().split('T')[0],
+      Questions: [{
+      	id: '123',
+      	label: 'Do you know that you can add new questions?',
+      }],
+      AvailableQuestions: [{
+      	id: '152', 
+      	label: 'What is the best Question 1?',
+      }, {
+      	id: '321',
+      	label: 'Do you like this survey?',
+      }, {
+      	id: '12312',
+      	label: 'This drag and drop feature in ETS is cool, right?'
+      }]
     },
     {
-      campaignName: 'Free email responsive design template...', 
-      account: 'Revenue Automation', 
-      referral: {'signup': 5, 'referrers': 5, 'referees': 4}, 
-      startDate: new Date(), 
-      endDate: new Date(), 
-      addDate: new Date()
+      CampaignName: 'Free email responsive design template...', 
+      Account: 'Revenue Automation', 
+      Referral: {'signup': 5, 'referrers': 5, 'referees': 4}, 
+      StartDate: new Date().toISOString().split('T')[0], 
+      EndDate: new Date().toISOString().split('T')[0], 
+      AddDate: new Date().toISOString().split('T')[0],
+      Questions: [{
+      	id: '123',
+      	label: 'Do you know that you can add new questions?',
+      }],
+      AvailableQuestions: [{
+      	id: '152', 
+      	label: 'What is the best Question 1?',
+      }, {
+      	id: '321',
+      	label: 'Do you like this survey?',
+      }, {
+      	id: '12312',
+      	label: 'This drag and drop feature in ETS is cool, right?'
+      }]
     },
     {
-      campaignName: 'Enter to win the all-new 2013 Nissan Pathfinder', 
-      account: 'Nissan', 
-      referral: {'signup': 10, 'referrers': 5, 'referees': 4}, 
-      startDate: new Date(), 
-      endDate: new Date(), 
-      addDate: new Date()
+      CampaignName: 'Enter to win the all-new 2013 Nissan Pathfinder', 
+      Account: 'Nissan', 
+      Referral: {'signup': 10, 'referrers': 5, 'referees': 4}, 
+      StartDate: new Date().toISOString().split('T')[0], 
+      EndDate: new Date().toISOString().split('T')[0], 
+      AddDate: new Date().toISOString().split('T')[0],
+      Questions: [{
+      	id: '123',
+      	label: 'Do you know that you can add new questions?',
+      }],
+      AvailableQuestions: [{
+      	id: '152', 
+      	label: 'What is the best Question 1?',
+      }, {
+      	id: '321',
+      	label: 'Do you like this survey?',
+      }, {
+      	id: '12312',
+      	label: 'This drag and drop feature in ETS is cool, right?'
+      }]
     },
   ];
   var account = [
@@ -748,7 +830,7 @@ angular.module('ngAdminLteApp.services', [])
   		fields.forEach(function(f){
   			var value = 'Very cool ' + f.label + i;
   			if (f.type === 'datepicker') {
-  				value = new Date();
+  				value = new Date().toISOString().split('T')[0];
   			} else if (f.type === 'radio') {
   				value = 'Yes';
   			}

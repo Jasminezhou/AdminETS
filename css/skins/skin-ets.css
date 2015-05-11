@@ -291,5 +291,26 @@
   padding: 15px;
 }
 
+.sortable-wrapper {
+  display: inline-table;
+}
+
+.sortable-container {
+  min-height: 100px;
+  padding: 5px;
+}
+
+.sortable-item {
+  padding: 5px 10px;
+  margin: 5px 0;
+  border: 2px solid #444;
+  border-radius: 5px;
+  background-color: #EA8A8A;
+
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  cursor: move;
+}
 
 /*End of ETS theme*/

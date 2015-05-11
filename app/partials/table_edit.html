@@ -37,6 +37,18 @@
                 </label>
               </div>
             </div>
+            <div ng-if="field.type==='sortable'">
+              <div class="form-control sortable-wrapper">
+                <div ui-sortable="field.sortableOptions" class="sortable-container col-md-6" ng-model="rowData[field.sortableCfg.choice.key]">
+                  <b>{{field.sortableCfg.choice.label}}</b>
+                  <div class="sortable-item" ng-repeat="choice in rowData[field.sortableCfg.choice.key]">{{choice.label}}</div>
+                </div>
+                <div ui-sortable="field.sortableOptions" class="sortable-container col-md-6" ng-model="rowData[field.key]">
+                  <b>{{field.sortableCfg.selection.label}}</b>
+                  <div class="sortable-item" ng-repeat="selection in rowData[field.key]">{{selection.label}}</div>
+                </div>
+              </div>
+            </div>
         </div><!-- /.form-group (ng-repeat) -->
         <div class="form-group">
           <button class="btn btn-success">OK</button>

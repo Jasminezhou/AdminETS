@@ -54,3 +54,9 @@ angular.module('ngAdminLteApp.controllers', ['ngAdminLteApp.services'])
   };
 
 })
+.controller('ApiDocCtrl', function($scope, TableDataService) {
+  $scope.allTables = Object.keys(TableDataService);
+  $scope.getSampleData = function(tableName) {
+    return JSON.stringify(TableDataService[tableName], undefined, 2);
+  }
+})

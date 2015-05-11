@@ -11,12 +11,6 @@
                 <button type="button" class="btn btn-default btn-sm" ng-click="$state.go('root.table.create', {'tableName': tableName})">
                   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create
                 </button>
-                <button type="button" class="btn btn-default btn-sm">
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete
-                </button>
-                <button type="button" class="btn btn-default btn-sm">
-                  <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Config
-                </button>
               <input st-search="" type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
             </div>
           </div>
@@ -34,10 +28,15 @@
                 <td ng-repeat="col in tableConfig.columnCfg" st-cell-with-template>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-sm btn-info" ng-click="$state.go('root.table.edit', {'tableName': tableName, 'recordId': $index})">
+                  <button type="button" class="btn btn-sm btn-info" ng-click="$state.go('root.table.edit', {'tableName': tableName, 'recordId': $index})" popover="Edit" popover-trigger="mouseenter">
                     <i class="glyphicon glyphicon-pencil"> </i> 
                   </button> 
-                  <button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger"> 
+                  
+                  <button type="button" class="btn btn-sm {{button.btnClass}}" ng-repeat="button in tableConfig.actionButtons" popover="{{button.label}}" popover-trigger="mouseenter">
+                    <i class="{{button.iconClass}}">
+                  </button>
+
+                  <button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger" popover="Delete" popover-trigger="mouseenter">
                     <i class="glyphicon glyphicon-remove"> </i> 
                   </button>
                 </td>
