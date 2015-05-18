@@ -30,7 +30,9 @@ angular.module('ngAdminLteApp.controllers', ['ngAdminLteApp.services'])
     } else {
       // reset all treeview items
       angular.forEach($scope.treeview, function(value, key) {
-        $scope.treeview[key].forEach(function(v, i){$scope.treeview[key][i] = false}); 
+        if ($scope.treeview[key].length) {
+          $scope.treeview[key].forEach(function(v, i){$scope.treeview[key][i] = false}); 
+        }
       })
     }
     

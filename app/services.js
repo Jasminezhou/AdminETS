@@ -161,7 +161,7 @@ angular.module('ngAdminLteApp.services', [])
 		label: 'Account',
 		columnCfg: [{
 			label: 'Company Name',
-			cellTemplate: '<h2>{{row.Name}}</h2>'
+			cellTemplate: '<strong>{{row.Name}}</strong>'
 		}, {
 			label: 'Shortcode for Company',
 			sortKey: 'AccountCode',
@@ -231,10 +231,10 @@ angular.module('ngAdminLteApp.services', [])
 			cellTemplate: '<span>{{row.Name}}</span>',
 		}, {
 			label: 'Campaign',
-			cellTemplate: '<span>{{row.Campaign}}</span>',
+			cellTemplate: '<span>{{row.Campaign.value.label}}</span>',
 		}, {
 			label: 'Voucher Category',
-			cellTemplate: '<span>{{row.VoucherCategory}}</span>',
+			cellTemplate: '<span>{{row.VoucherCategory.value.label}}</span>',
 		}, {
 			label: 'Description',
 			cellTemplate: '<span>{{row.DescTitle}}</span>',
@@ -300,7 +300,7 @@ angular.module('ngAdminLteApp.services', [])
 			cellTemplate: '<span>{{row.VoucherCode}}</span>',
 		}, {
 			label: 'Group',
-			cellTemplate: '<span>{{row.Group}}</span>',
+			cellTemplate: '<span>{{row.Group.value.label}}</span>',
 		}, {
 			label: 'Added Date',
 			cellTemplate: '<span>{{row.AddDate | date}}</span>',
