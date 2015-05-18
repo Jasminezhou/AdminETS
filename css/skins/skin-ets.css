@@ -275,7 +275,7 @@
 }
 
 .sidebar-menu {
-  height: calc(100% - 55px);
+  height: calc(100% - 5px); /* (100% - 55px) if add search box at sidebar footer */
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -291,9 +291,15 @@
   padding: 15px;
 }
 
+/* start of UI-Sortable */
 .sortable-wrapper {
   display: inline-table;
 }
+
+.sortable-wrapper .title-container {  
+  display: inline-block;
+  width: 100%;
+}  
 
 .sortable-container {
   min-height: 100px;
@@ -312,5 +318,5 @@
   text-align: center;
   cursor: move;
 }
-
+/* end of UI-Sortable */
 /*End of ETS theme*/

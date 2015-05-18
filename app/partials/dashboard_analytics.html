@@ -1,0 +1,12 @@
+<section class="content">
+  <h3>Analytics Dashboard</h3>
+  <!-- Info boxes -->
+  <div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="widget in widgets">
+      <widget-chart cfg="widget"></widget-chart>
+    </div><!-- /.col -->
+
+    <!-- fix for small devices only -->
+    <div class="clearfix visible-sm-block"></div>
+  </div><!-- /.row -->
+</section>

@@ -1,5 +1,6 @@
 angular.module('ngAdminLteApp.services', [])
 
+// Setup basic Admin console information, e.g. The owner, copyright, reference link etc.
 .factory('SiteConfig', function(){
 	return {
 		userIconUrl: 'http://etsmock.azurewebsites.net/dist/img/254b489.jpg',
@@ -10,6 +11,7 @@ angular.module('ngAdminLteApp.services', [])
 	}
 })
 
+// Set up Site Detail, e.g. Side bar menu details
 .factory('SiteContent', function(){
 	var sidebarTableMenu = [
 	{
@@ -79,7 +81,7 @@ angular.module('ngAdminLteApp.services', [])
 		}, {
 			label: 'Account',
 			sortKey: 'Account',
-			cellTemplate: '<span>{{row.Account}}</span>',
+			cellTemplate: '<span>{{row.Account.value.label}}</span>',
 		}, {
 			label: 'Referral Status',
 			cellTemplate: '<a class="btn btn-app"> <span class="badge bg-red">{{row.Referral.signup}}</span> <i class="fa fa-heart-o"></i> Sign Ups </a> <a class="btn btn-app"> <span class="badge badge bg-teal">{{row.Referral.referrers}}</span> <i class="fa fa-users"></i> Referrers </a> <a class="btn btn-app"> <span class="badge bg-yellow">{{row.Referral.referees}}</span> <i class="fa fa-bullhorn"></i> Referees </a>',
@@ -137,6 +139,10 @@ angular.module('ngAdminLteApp.services', [])
 			label: 'Questions',
 			type: 'sortable',
 			sortableOptions: {
+				// this sort options is very important. helper box top position will be wrong without it
+				sort: function(event, ui) {  
+			    	ui.helper.css({'top' : ui.position.top + $(window).scrollTop() + 'px'});
+			    },
 				placeholder: "sortable-item",
     			connectWith: ".sortable-container"
     		},
@@ -720,11 +726,231 @@ angular.module('ngAdminLteApp.services', [])
 	}
 })
 
+.factory('DashboardDataService', function(){
+	var analyticsData = [{
+		title: 'Leads Conversion Rate',
+		chartOpt: {
+		    data: {
+		        columns: [
+		            ['signup', 0.30, 0.35, 0.30, 0, 0, 0],
+		            ['referral', 0.13, 0.10, 0.14, 0.20, 0.15, 0.50]
+		        ],
+		        types: {
+		            signup: 'area',
+		            referral: 'area-spline'
+		        }
+		    }
+		}    
+	}, {
+		title: 'Referrals by Position',
+		chartOpt: {
+			data: {
+		        columns: [
+		            ['% of refferals', 10, 30, 60]
+		        ],
+		        types: {
+		            '% of refferals': 'bar'
+		        },
+		        color: function (inColor, data) {
+		            if (data.index !== undefined) {
+		                return d3.scale.category10()(data.index);
+		            }
+
+		            return inColor;
+		        }
+		    },
+		      
+		    axis: {
+		        x: {
+		            type: 'category',
+		            categories: ['Manager', 'Senior level', 'Junior level']
+		        },
+		        y: {
+
+		            label: '% of refferals'
+		        },
+		        rotated: true
+		    },
+		    legend: {
+		        show: false
+		    }
+		}    
+	}, {
+		title: 'Topic Analysis',
+		chartOpt: {
+	        data: {
+	            columns: [
+	                ['% of refferals', 80, 20]
+	            ],
+	            types: {
+	                '% of refferals': 'bar'
+	            },
+	            color: function (inColor, data) {
+	                if (data.index !== undefined) {
+	                    return d3.scale.category10()(data.index);
+	                }
+
+	                return inColor;
+	            }
+	        },	       
+	        axis: {
+	        	x: {
+	        		type: 'category',
+	        		categories: ['Polarity', 'Guidance']
+				},
+	    		y: {
+	    			label: '% of refferals'
+	    		},
+				rotated: true
+			},
+	      
+			legend: {
+			  show: false
+			}
+		}
+	}, {
+		title: 'Actions Analysis',
+		chartOpt: {
+	    data: {
+	        columns: [
+	            ['% of refferals',30, 45, 20, 10, 40, 20]
+	        ],
+	        types: {
+	            '% of refferals': 'bar'
+	        },
+	        color: function (inColor, data) {
+	            if (data.index !== undefined) {
+	                return d3.scale.category10()(data.index);
+	            }
+
+	            return inColor;
+	        }
+	    },
+	        
+	     
+	    axis: {
+	        x: {
+	            type: 'category',
+	            categories: ['Decisiveness','Temporality', 'Guidance', 'Flamboyance', 'Slang', 'Contrast']
+	        },
+	        y: {
+
+	            label: '% of refferals'
+	        },
+	        rotated: true
+	    },
+	    legend: {
+	        show: false
+	    }
+		}
+	}, {
+		title: 'Referral by Country',
+		chartOpt: {
+	    data: {
+	        columns: [
+            ["Canada", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3],
+            ["USA", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0],
+            ["UK", 2.5, 1.9, 2.1, 1.8, 2.2, 2.1, 1.7, 1.8, 1.8],
+            ["German", 2.5, 1.9, 2.1, 1.8, 2.2, 2.1, 1.7, 1.8, 1.8],
+            ["China", 5.5, 1.9, 2.1, 1.8, 2.2],
+        ],
+	        type : 'pie',
+	    }
+		}
+	}];
+	var overall = [{
+		title: 'Daily Referral - Overwaitea Food Group',
+		chartOpt: {
+	    data: {
+	        x: 'x',
+	//        xFormat: '%Y%m%d', // 'xFormat' can be used as custom format of 'x'
+	        columns: [
+	            ['x', '2015-01-01', '2015-01-02', '2015-01-03', '2015-01-04', '2015-01-05', '2015-01-06'],
+	//            ['x', '20130101', '20130102', '20130103', '20130104', '20130105', '20130106'],
+	            ['referral', 30, 200, 100, 400, 150, 250],
+	            ['sign up', 130, 340, 200, 500, 250, 350]
+	        ]
+	    },
+	    axis: {
+	        x: {
+	            type: 'timeseries',
+	            tick: {
+	                format: '%Y-%m-%d'
+	            }
+	        }
+	    }
+		}
+	}, {
+		title: 'Daily Referral - Future Flow Media',
+		chartOpt: {
+	    data: {
+	        x: 'x',
+	//        xFormat: '%Y%m%d', // 'xFormat' can be used as custom format of 'x'
+	        columns: [
+	            ['x', '2015-01-01', '2015-01-02', '2015-01-03', '2015-01-04', '2015-01-05', '2015-01-06'],
+	//            ['x', '20130101', '20130102', '20130103', '20130104', '20130105', '20130106'],
+	            ['referral', 40, 100, 50, 60, 70, 90],
+	            ['sign up', 130, 240, 100, 300, 250, 350]
+	        ]
+	    },
+	    axis: {
+	        x: {
+	            type: 'timeseries',
+	            tick: {
+	                format: '%Y-%m-%d'
+	            }
+	        }
+	    }
+		}
+	}, {
+		title: 'Daily Referral - Revenue Automation',
+		chartOpt: {
+	    data: {
+	        x: 'x',
+	//        xFormat: '%Y%m%d', // 'xFormat' can be used as custom format of 'x'
+	        columns: [
+	            ['x', '2015-01-01', '2015-01-02', '2015-01-03', '2015-01-04', '2015-01-05', '2015-01-06'],
+	//            ['x', '20130101', '20130102', '20130103', '20130104', '20130105', '20130106'],
+	            ['referral', 20, 30, 50, 70, 85, 90],
+	            ['sign up', 200, 150, 450, 500, 400, 350]
+	        ]
+	    },
+	    axis: {
+	        x: {
+	            type: 'timeseries',
+	            tick: {
+	                format: '%Y-%m-%d'
+	            }
+	        }
+	    }
+		}
+	}];
+	return {
+		analytics: analyticsData,
+		overall: overall
+	}
+})
+
 .factory('TableDataService', function(TableConfig){
 	var campaign = [
     {
       CampaignName: 'California Dreaming', 
-      Account: 'Overwaitea Food Group', 
+      Account: {
+      	value: {
+      		id: 1,
+      		label: 'Overwaitea Food Group',
+      	},
+      	options: [{
+      		id: 1,
+      		label: 'Overwaitea Food Group',
+      	}, {
+      		id: 2,
+      		label: 'Future Flow Media',
+      	}, {
+      		id: 3,
+      		label: 'Revenue Automation'
+      	}]
+      }, 
       Referral: {'signup': 10, 'referrers': 5, 'referees': 4}, 
       StartDate: new Date().toISOString().split('T')[0], 
       EndDate: new Date().toISOString().split('T')[0], 
@@ -746,7 +972,22 @@ angular.module('ngAdminLteApp.services', [])
     },
     {
       CampaignName: 'Refer a Friend for FREE Increase in Campaign Performance!', 
-      Account: 'Future Flow Media', 
+      Account: {
+      	value: {
+      		id: 2,
+      		label: 'Future Flow Media',
+      	},
+      	options: [{
+      		id: 1,
+      		label: 'Overwaitea Food Group',
+      	}, {
+      		id: 2,
+      		label: 'Future Flow Media',
+      	}, {
+      		id: 3,
+      		label: 'Revenue Automation'
+      	}]
+      },
       Referral: {'signup': 33, 'referrers': 28, 'referees': 19}, 
       StartDate: new Date().toISOString().split('T')[0], 
       EndDate: new Date().toISOString().split('T')[0], 
@@ -768,7 +1009,22 @@ angular.module('ngAdminLteApp.services', [])
     },
     {
       CampaignName: 'Free email responsive design template...', 
-      Account: 'Revenue Automation', 
+      Account: {
+      	value: {
+      		id: 3,
+      		label: 'Revenue Automation'
+      	},
+      	options: [{
+      		id: 1,
+      		label: 'Overwaitea Food Group',
+      	}, {
+      		id: 2,
+      		label: 'Future Flow Media',
+      	}, {
+      		id: 3,
+      		label: 'Revenue Automation'
+      	}]
+      },
       Referral: {'signup': 5, 'referrers': 5, 'referees': 4}, 
       StartDate: new Date().toISOString().split('T')[0], 
       EndDate: new Date().toISOString().split('T')[0], 
@@ -790,7 +1046,25 @@ angular.module('ngAdminLteApp.services', [])
     },
     {
       CampaignName: 'Enter to win the all-new 2013 Nissan Pathfinder', 
-      Account: 'Nissan', 
+      Account: {
+      	value: {
+      		id: 4,
+      		label: 'Nissan'
+      	},
+      	options: [{
+      		id: 1,
+      		label: 'Overwaitea Food Group',
+      	}, {
+      		id: 2,
+      		label: 'Future Flow Media',
+      	}, {
+      		id: 3,
+      		label: 'Revenue Automation'
+      	}, {
+      		id: 4,
+      		label: 'Nissan'
+      	}]
+      },
       Referral: {'signup': 10, 'referrers': 5, 'referees': 4}, 
       StartDate: new Date().toISOString().split('T')[0], 
       EndDate: new Date().toISOString().split('T')[0], 
@@ -833,6 +1107,13 @@ angular.module('ngAdminLteApp.services', [])
   				value = new Date().toISOString().split('T')[0];
   			} else if (f.type === 'radio') {
   				value = 'Yes';
+  			} else if (f.type === 'dropdown') {
+  				value = {};
+  				value.options = [{id: 1}, {id: 2}, {id: 3}].map(function(o, i){
+  					o.label = f.label + ' ' + i;
+  					return o;
+  				});
+  				value.value = value.options[1];
   			}
   			record[f.key] = value
   		});

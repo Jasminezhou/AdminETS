@@ -30,5 +30,30 @@ angular.module('ngAdminLteApp.directives', [])
 	    }
 	  }
 	};
-});
+})
+
+.directive('widgetChart', function($timeout){
+	return {
+		restrict: 'E',
+		scope: {
+			cfg: "=cfg"
+		},
+		templateUrl: 'app/partials/widget-chart.html',
+		link: function(scope, element, attr) {
+			$timeout(function(){
+				var columns = angular.copy(scope.cfg.chartOpt.data.columns);
+				scope.cfg.chartOpt.data.columns = [];
+				scope.cfg.chartOpt.bindto = '#chart_' + scope.$parent.$index;
+				scope.chart = c3.generate(scope.cfg.chartOpt);
+				$timeout(function(){
+					scope.cfg.chartOpt.data.columns = angular.copy(columns);
+					scope.chart.load({
+						columns: columns,
+					})
+				}, 500 * scope.$parent.$index);
+			});
+
+		}
+	}
+})
 

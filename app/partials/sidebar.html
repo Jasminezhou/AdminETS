@@ -4,14 +4,26 @@
   <!-- Sidebar Menu -->
   <ul class="sidebar-menu">
     
-    <!-- Optionally, you can add icons to the links -->
+    <li class="header"><b>DASHBOARD</b></li>
     <li ng-class="{'active': $state.current.name === 'root.dashboard'}">
-      <a ng-click="resetTreeview()" ui-sref="root.dashboard"><span class="glyphicon glyphicon-th" aria-hidden="true"></span><span> Dashboard</span></a>
+      <a ng-click="resetTreeview()" ui-sref="root.dashboard"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span><span> Overall</span></a>
+    </li>
+    <!-- Treeview table menu, config is from services.SiteContent.sidebarDashboardMenu -->
+    <li class="treeview" ng-repeat="dashboard in dashboardCfg" ng-class="{'active': treeview.dashboard[$index]}">
+      <a ng-click="resetTreeview(); treeview.dashboard[$index] = !treeview.dashboard[$index]"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></span><span>{{dashboard.label}}</span> <i class="fa fa-angle-left pull-right"></i></a>
+      <ul class="treeview-menu">
+        <li ng-class="{'active': $state.current.name === 'root.dashboard.summary'}">
+          <a ui-sref="root.dashboard.summary({dashboardCampaign: dashboard.id})"></span>Campaign Summary</span></a>
+        </li>
+        <li ng-class="{'active': $state.current.name === 'root.dshboard.analytics'}">
+          <a ui-sref="root.dashboard.analytics({dashboardCampaign: dashboard.id})"></span>Campaign Analytics</span></a>
+        </li>
+      </ul>
     </li>
     <li class="header"><b>DATABASE CONSOLE</b></li>
     <!-- Treeview table menu, config is from services.SiteContent.sidebarTableMenu -->
-    <li class="treeview" ng-repeat="category in treeviewCfg" ng-class="{'active': treeview[$index]}">
-      <a ng-click="resetTreeview(); treeview[$index] = !treeview[$index]"><span class="{{category.icon}}" aria-hidden="true"></span><span>{{category.label}}</span> <i class="fa fa-angle-left pull-right"></i></a>
+    <li class="treeview" ng-repeat="category in treeviewCfg" ng-class="{'active': treeview.table[$index]}">
+      <a ng-click="resetTreeview(); treeview.table[$index] = !treeview.table[$index]"><span class="{{category.icon}}" aria-hidden="true"></span><span>{{category.label}}</span> <i class="fa fa-angle-left pull-right"></i></a>
       <ul class="treeview-menu">
         <li ng-repeat="table in category.tables" ng-class="{'active': $state.params.tableName === table.tableName}">
           <a ui-sref="root.table.list({tableName: table.tableName})"></span>{{table.label}}</span></a>
@@ -42,7 +54,7 @@
     </li>
   </ul><!-- /.sidebar-menu -->
 
-    <!-- search form (Optional) -->
+    <!-- search form (Optional) 
   <form class="sidebar-form">
     <div class="input-group">
       <input type="text" name="q" class="form-control" placeholder="Search..."/>
@@ -51,6 +63,6 @@
       </span>
     </div>
   </form>
-  <!-- /.search form -->
+   /.search form -->
 </section>
 <!-- /.sidebar -->

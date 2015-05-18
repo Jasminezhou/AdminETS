@@ -81,11 +81,31 @@ angular.module('ngAdminLteApp', ['ui.router', 'ui.bootstrap', 'ui.sortable', 'ng
         })    
         // Dashboard
         .state('root.dashboard', {
-            url: '/',
+            url: '/dashboard',
             views: {
                 'master@root': {
-                    templateUrl: 'app/partials/dashboard.html',
+                    templateUrl: 'app/partials/dashboard_overall.html',
                     controller: 'DashboardCtrl'
+                }
+            }
+        })
+        // Dashboard Summary
+        .state('root.dashboard.summary', {
+            url: '/summary/:dashboardCampaign',
+            views: {
+                'master@root': {
+                    templateUrl: 'app/partials/dashboard_summary.html',
+                    controller: 'DashboardSummaryCtrl'
+                }
+            }
+        })
+        // Dashboard Analytics
+        .state('root.dashboard.analytics', {
+            url: '/analytics/:dashboardCampaign',
+            views: {
+                'master@root': {
+                    templateUrl: 'app/partials/dashboard_analytics.html',
+                    controller: 'DashboardAnalyticsCtrl'
                 }
             }
         })

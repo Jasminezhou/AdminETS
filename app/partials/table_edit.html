@@ -13,13 +13,7 @@
               <input type="text" class="form-control" ng-model="rowData[field.key]" placeholder="Enter ..." />
             </div>
             <div ng-if="field.type==='dropdown'">
-              <select class="form-control">
-                <option>option 1</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
-              </select>
+              <select class="form-control" ng-model="rowData[field.key].value" ng-options="option as option.label for option in rowData[field.key].options track by option.id"></select>
             </div>
             <div ng-if="field.type==='datepicker'">
               <div class="input-group">
@@ -38,15 +32,24 @@
               </div>
             </div>
             <div ng-if="field.type==='sortable'">
+
               <div class="form-control sortable-wrapper">
-                <div ui-sortable="field.sortableOptions" class="sortable-container col-md-6" ng-model="rowData[field.sortableCfg.choice.key]">
-                  <b>{{field.sortableCfg.choice.label}}</b>
-                  <div class="sortable-item" ng-repeat="choice in rowData[field.sortableCfg.choice.key]">{{choice.label}}</div>
+                <div class="title-container">
+                  <b class="pull-left">{{field.sortableCfg.choice.label}}</b>
+                  <b class="pull-right">{{field.sortableCfg.selection.label}}</b>
                 </div>
-                <div ui-sortable="field.sortableOptions" class="sortable-container col-md-6" ng-model="rowData[field.key]">
-                  <b>{{field.sortableCfg.selection.label}}</b>
-                  <div class="sortable-item" ng-repeat="selection in rowData[field.key]">{{selection.label}}</div>
+
+                <div ui-sortable="field.sortableOptions" class="sortable-container screen col-md-6" ng-model="rowData[field.sortableCfg.choice.key]">
+                  <div class="sortable-item" ng-repeat="app in rowData[field.sortableCfg.choice.key]">
+                    {{$index}} {{app.label}}
+                  </div>
                 </div>
+                <div ui-sortable="field.sortableOptions" class="sortable-container screen col-md-6" ng-model="rowData[field.key]">
+                  <div class="sortable-item" ng-repeat="app in rowData[field.key]">
+                    {{$index}} {{app.label}}
+                  </div>
+                </div>
+                <div style="clear: both;"></div>
               </div>
             </div>
         </div><!-- /.form-group (ng-repeat) -->

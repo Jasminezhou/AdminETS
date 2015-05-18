@@ -3,15 +3,37 @@ angular.module('ngAdminLteApp.controllers', ['ngAdminLteApp.services'])
 .controller('RootCtrl', function($scope, $rootScope, $state, SiteConfig, SiteContent){
   $scope.siteConfig = SiteConfig;
   // controls sidebar expand/close
-  $rootScope.sidebarCollapse = true;
+  $rootScope.sidebarCollapse = false;
   $scope.toggleSidebar = function(){
     $rootScope.sidebarCollapse = !$rootScope.sidebarCollapse;
   };
   // controls sidebar multiple level tree menu open and close
-  $scope.treeview = [];
+  $scope.treeview = {
+    dashboard: [],
+    table: []
+  };
+  $scope.dashboardCfg = [{
+    id: 1,
+    label: 'Overwaitea Food Group',
+  }, {
+    id: 2,
+    label: 'Future Flow Media',
+  }, {
+    id: 3,
+    label: 'Revenue Automation'
+  }];
   $scope.treeviewCfg = SiteContent.sidebarTableMenu;
-  $scope.resetTreeview = function(){
-    $scope.treeview.forEach(function(v, i){$scope.treeview[i] = false});
+  $scope.resetTreeview = function(category){
+    if (category) {
+      // reset treeview[category]
+      $scope.treeview[category].forEach(function(v, i){$scope.treeview[category][i] = false}); 
+    } else {
+      // reset all treeview items
+      angular.forEach($scope.treeview, function(value, key) {
+        $scope.treeview[key].forEach(function(v, i){$scope.treeview[key][i] = false}); 
+      })
+    }
+    
   }
   // open a certain treeview category based on $state.params.tableName if any
   if ($state.params.tableName) {
@@ -25,8 +47,14 @@ angular.module('ngAdminLteApp.controllers', ['ngAdminLteApp.services'])
 .controller('LoginCtrl', function($scope, $rootScope){ })
 .controller('LockCtrl', function($scope){ })
 .controller('RegisterCtrl', function($scope){ })
-.controller('DashboardCtrl', function($scope, $rootScope){
+.controller('DashboardCtrl', function($scope, $rootScope, DashboardDataService){
   $rootScope.sidebarCollapse = false;
+  $scope.widgets = DashboardDataService.overall;
+
+})
+.controller('DashboardSummaryCtrl', function($scope, $rootScope){})
+.controller('DashboardAnalyticsCtrl', function($scope, $rootScope, DashboardDataService){
+  $scope.widgets = DashboardDataService.analytics;
 })
 .controller('TableListCtrl', function($scope, $state, TableConfig, TableDataService){
   $scope.tableName = $state.params.tableName;
