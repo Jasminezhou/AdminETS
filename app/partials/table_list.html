@@ -2,10 +2,10 @@
 <section class="content">
   <div class="row">
     <div class="col-xs-12">
-      <h3 class="box-title">List view</h3>
+      <h4 class="box-title">{{tableConfig.label}} List view</h4>
       <div class="box" st-table="rowCollection">
         <div class="box-header">
-          <div class="box-title">{{tableConfig.label}}</div>
+       
           <div class="box-tools pull-right">
             <div class="input-group">
                 <button type="button" class="btn btn-default btn-sm" ng-click="$state.go('root.table.create', {'tableName': tableName})">

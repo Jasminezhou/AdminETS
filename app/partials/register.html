@@ -5,6 +5,7 @@
     </div>
 
     <div class="register-box-body">
+      <center><span class="register-icon glyphicon glyphicon-pencil"></span></center>
       <p class="login-box-msg">Register a new membership</p>
       <form>
         <div class="form-group has-feedback">
@@ -29,19 +30,22 @@
               <input type="checkbox"> I gree to the <a>terms</a>
             </label>   
           </div><!-- /.col -->
-          <div class="col-xs-4">
-            <button  ng-click="$state.go('root.dashboard')"  class="btn btn-primary btn-block btn-flat">Register</button>
+          <div class="col-xs-12">
+            <button  ng-click="$state.go('root.dashboard')"  class="btn btn-success btn-block btn-flat btn-lg">Register</button>
+            <center><a ui-sref="root.login">I already have a membership</a></center>
           </div><!-- /.col -->
         </div>
       </form>        
 
       <div class="social-auth-links text-center">
         <p>- OR -</p>
-        <a  ui-sref="root.dashboard" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using Facebook</a>
-        <a  ui-sref="root.dashboard" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign up using Google+</a>
+        <P>You can sign in via your social network</P>
+        <a class="btn btn-social-icon btn-default"><i class="fa fa-facebook"></i></a>
+        <a class="btn btn-social-icon btn-default"><i class="fa fa-google-plus"></i></a>
+
       </div>
 
-      <a ui-sref="root.login" class="text-center">I already have a membership</a>
+      
     </div><!-- /.form-box -->
   </div><!-- /.register-box -->
 </div>

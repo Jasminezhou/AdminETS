@@ -9,7 +9,7 @@
   left: 0;
   position: absolute;
   z-index: 99999;
-  background-color: #d2d6de;
+  background-color: rgb(226, 240, 239);
   height: 100%;
   width: 100%;
   overflow: hidden;

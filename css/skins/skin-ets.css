@@ -2,12 +2,16 @@
  * Skin: Green
  * -----------
  */
+body{
+  color: #676A6C;
+}
+
 .skin-ets .main-header .navbar {
-  background-color: lightseagreen;
+  background-color: rgb(23, 147, 140);
 }
 
 .skin-ets .content-wrapper, .right-side {
-  background-color: #f3f3f4;
+  background-color: #e5e9ec;
 }
 
 .skin-ets footer a{
@@ -44,7 +48,7 @@
   color: #fff;
 }
 .skin-ets .main-header .navbar .sidebar-toggle:hover {
-  background-color: #17938C;;
+  background-color: #157E78;
 }
 @media (max-width: 767px) {
   .skin-ets .main-header .navbar .dropdown-menu li.divider {
@@ -152,10 +156,11 @@
   border-bottom-left-radius: 0 !important;
 }
 
-/*Start of ETS theme*/
-.fullscreen-wrapper{
-  background-color: lightseagreen !important; 
+.ng-valid-date .btn-default{
+  border-color: #fff;
 }
+
+/*Start of ETS theme*/
 
 .btn-default {
   background-color: transparent;
@@ -266,10 +271,6 @@
   border-top: 3px solid lightseagreen;
 }
 
-.form-control{
-  border-color: lightseagreen;
-}
-
 .main-sidebar {
   height: 100%;
 }
@@ -317,6 +318,15 @@
   font-weight: bold;
   text-align: center;
   cursor: move;
+}
+
+.login-icon, .register-icon{
+  border-radius: 50%;
+  padding: 1em;
+  color: white;
+  font-size: 2em;
+  background: lightseagreen;
+  margin-bottom: 15px;
 }
 /* end of UI-Sortable */
 /*End of ETS theme*/

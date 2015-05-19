@@ -103,7 +103,7 @@ body {
   z-index: 800;
 }
 .main-footer {
-  background: #fff;
+  background: #f7f7f7;
   padding: 15px;
   color: #444;
   border-top: 1px solid #eee;
@@ -158,14 +158,14 @@ h6,
 }
 /* General Links */
 a {
-  color: #3c8dbc;
+  color: #6C6D6D;
 }
 a:hover,
 a:active,
 a:focus {
   outline: none;
   text-decoration: none;
-  color: #72afd2;
+  color: lightseagreen;
 }
 /* Page Header */
 .page-header {
@@ -884,7 +884,7 @@ a:focus {
   border-color: #d2d6de;
 }
 .form-control:focus {
-  border-color: #3c8dbc !important;
+  border-color: #20B2AA !important;
   box-shadow: none;
 }
 .form-control::-moz-placeholder {
@@ -1325,7 +1325,7 @@ a:focus {
 .box-header {
   color: #444;
   display: block;
-  padding: 10px;
+  padding: 30px;
   position: relative;
 }
 .box-header:before,
@@ -2754,15 +2754,14 @@ table.text-center th {
 }
 .login-box-body,
 .register-box-body {
-  background: #fff;
   padding: 20px;
-  color: #444;
   border-top: 0;
   color: #666;
 }
 .login-box-body .form-control-feedback,
 .register-box-body .form-control-feedback {
-  color: #777;
+  background: lightseagreen;
+  color: #FFF;
 }
 .login-box-msg,
 .register-box-msg {
