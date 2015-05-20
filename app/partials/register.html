@@ -6,7 +6,6 @@
 
     <div class="register-box-body">
       <center><span class="register-icon glyphicon glyphicon-pencil"></span></center>
-      <p class="login-box-msg">Register a new membership</p>
       <form>
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Full name"/>
@@ -28,13 +27,17 @@
           <div class="col-xs-8 checkbox">
             <label>
               <input type="checkbox"> I gree to the <a>terms</a>
-            </label>   
+            </label>  
+    
           </div><!-- /.col -->
-          <div class="col-xs-12">
-            <button  ng-click="$state.go('root.dashboard')"  class="btn btn-success btn-block btn-flat btn-lg">Register</button>
-            <center><a ui-sref="root.login">I already have a membership</a></center>
+          <div class="col-xs-12 form-group">
+            <button  ng-click="$state.go('root.dashboard')"  class="btn btn-success btn-block btn-flat btn-lg">Register</button>            
           </div><!-- /.col -->
+
+          <div class="col-xs-12 form-group">
+            <button ui-sref="root.login" class="btn btn-info btn-flat btn-block btn-sm">I already have a membership</button>
         </div>
+      </div>
       </form>        
 
       <div class="social-auth-links text-center">

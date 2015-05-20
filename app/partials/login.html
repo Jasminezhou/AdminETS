@@ -21,21 +21,30 @@
               <input type="checkbox"> Remember Me
             </label>   
           </div><!-- /.col -->
-          <div class="col-xs-12">
-            <button ng-click="$state.go('root.dashboard')" class="btn btn-success btn-block btn-flat btn-lg">Sign In</button>
-            <center><a ui-sref="root.dashboard">Forgot your password? Click here please.</a></center>
+          <div class="col-xs-12 form-group">
+          <button ng-click="$state.go('root.dashboard')" class="btn btn-success btn-block btn-flat btn-lg">Sign In</button>
           </div><!-- /.col -->
+        </div>
+
+
+        <div class="row">
+          <div class="col-xs-12">   
+          <button ng-click="$state.go('root.dashboard')" class="btn col-xs-5 btn-info btn-flat btn-sm">I forgot my password.</button>
+          <button ng-click="$state.go('root.register')"class="btn col-xs-offset-1 col-xs-6 btn-default btn-flat btn-sm">Register new membership</button>
+          </div> 
         </div>
       </form>
 
       <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        
-        <a class="btn btn-block btn-social btn-success btn-flat" ui-sref="root.dashboard"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
-        <a class="btn btn-block btn-social btn-success btn-flat" ui-sref="root.dashboard"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
+        <p>- OR -</p><P>You can sign in via your social network</P>
+        <a class="btn btn-social-icon btn-default"><i class="fa fa-facebook"></i></a>
+        <a class="btn btn-social-icon btn-default"><i class="fa fa-google-plus"></i></a>
+
       
       </div><!-- /.social-auth-links -->
-      <button ui-sref="root.register" class="btn btn-default btn-block btn-flat">Register a new membership</button>
+
+      
+
 
 
     </div><!-- /.login-box-body -->
